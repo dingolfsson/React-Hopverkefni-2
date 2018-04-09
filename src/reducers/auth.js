@@ -5,6 +5,8 @@ import {
   LOGIN_LOGOUT,
 } from '../actions/auth';
 
+const user = JSON.parse(localStorage.getItem('user') || 'null');
+
 const initialState = {
   isFetching: false,
   isAuthenticated: user ? true : false,
