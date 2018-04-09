@@ -28,7 +28,7 @@ async function login(username, password) {
     name: 'Herra admin',
     username: 'admin',
   }
-  const c = await fetch(baseurl + 'login', {
+  const response = await fetch(baseurl + '/login', {
   method: 'POST',
   headers: {
     'Accept': 'application/json',
@@ -39,25 +39,15 @@ async function login(username, password) {
     password: password,
   })
   })
-  console.info(c);
+  console.info(response);
+  if(response.status === 401){
+    return {error: 'villa komm upp'};
+  }
+  if(response.status === 200){
+    return {mesage: 'skráning tókst' };
+  }
 
-  
-/*
-    if (username === 'error') {
-      return reject('Villa');
-    }
-
-    if (username === 'admin' && password === '123') {
-      return setTimeout(() => resolve({ loggedin: true, user }), 1000);
-    }
-
-    if (username !== 'admin') {
-      return setTimeout(() => resolve({ loggedin: false, error: 'Notandi ekki til' }), 500);
-    }
-
-    return setTimeout(() => resolve({ loggedin: false, error: 'Vitlaust lykilorð' }), 500);
-  });*/
-  return c;
+  return response;
 }
 
 
