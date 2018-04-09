@@ -22,13 +22,7 @@ async function get(endpoint) {
 }
 async function login(username, password) {
 
-  const token = window.localStorage.getItem('token');
-
-  const user = {
-    name: 'Herra admin',
-    username: 'admin',
-  }
-  const c = await fetch(baseurl + 'login', {
+  const c = await fetch(baseurl + '/login', {
   method: 'POST',
   headers: {
     'Accept': 'application/json',
@@ -38,25 +32,8 @@ async function login(username, password) {
     username: username,
     password: password,
   })
-  })
+  });
   console.info(c);
-
-  
-/*
-    if (username === 'error') {
-      return reject('Villa');
-    }
-
-    if (username === 'admin' && password === '123') {
-      return setTimeout(() => resolve({ loggedin: true, user }), 1000);
-    }
-
-    if (username !== 'admin') {
-      return setTimeout(() => resolve({ loggedin: false, error: 'Notandi ekki til' }), 500);
-    }
-
-    return setTimeout(() => resolve({ loggedin: false, error: 'Vitlaust lykilorð' }), 500);
-  });*/
   return c;
 }
 
