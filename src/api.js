@@ -17,13 +17,29 @@ async function get(endpoint) {
 
   /* todo framkvæma get */
 }
-function login(username, password) {
-  return new Promise((resolve, reject) => {
-    const user = {
-      name: 'Herra admin',
-      username: 'admin',
-    }
+async function login(username, password) {
 
+  const token = window.localStorage.getItem('token');
+
+  const user = {
+    name: 'Herra admin',
+    username: 'admin',
+  }
+  const c = await fetch(baseurl + 'login', {
+  method: 'POST',
+  headers: {
+    'Accept': 'application/json',
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify({
+    username: username,
+    password: password,
+  })
+  })
+  console.info(c);
+
+  
+/*
     if (username === 'error') {
       return reject('Villa');
     }
@@ -37,11 +53,14 @@ function login(username, password) {
     }
 
     return setTimeout(() => resolve({ loggedin: false, error: 'Vitlaust lykilorð' }), 500);
-  });
+  });*/
+  return c;
 }
+
 
 /* todo aðrar aðgerðir */
 
 export default {
   get,
+  login,
 };
