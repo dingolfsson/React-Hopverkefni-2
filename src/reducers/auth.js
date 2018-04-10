@@ -3,6 +3,9 @@ import {
   LOGIN_SUCCESS,
   LOGIN_FAILURE,
   LOGIN_LOGOUT,
+  REGISTER_SUCCESS,
+  REGISTER_FAILURE,
+  REGISTER_REQUEST,
 } from '../actions/auth';
 
 const user = JSON.parse(localStorage.getItem('user') || 'null');
@@ -43,6 +46,27 @@ export default (state = initialState, action) => {
         isFetching: action.isFetching,
         isAuthenticated: action.isAuthenticated,
         user: action.user,
+      }
+    case REGISTER_SUCCESS:
+      return {
+        ...state,
+        isFetching: action.isFetching,
+        isAuthenticated: action.isAuthenticated,
+        user: action.user,
+        message: action.message,
+      }
+    case REGISTER_FAILURE:
+      return{
+        ...state,
+        isFetching: action.isFetching,
+        isAuthenticated: action.isAuthenticated,
+        message: action.message
+      }
+    case REGISTER_REQUEST:
+      return {
+        ...state,
+        isFetching: action.isFetching,
+        isAuthenticated: action.isAuthenticated,
       }
     default:
       return state;

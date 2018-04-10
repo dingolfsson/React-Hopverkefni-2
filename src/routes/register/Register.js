@@ -27,6 +27,8 @@ class Register extends Component {
   render() {
     const { username, fname, password } = this.state;
     const { isFetching, isAuthenticated, message } = this.props;
+
+    console.info('wow', message);
     if (isFetching) {
       return (
         <p>Búa til notenda <em>{username}</em>...</p>

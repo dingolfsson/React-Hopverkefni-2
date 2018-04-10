@@ -89,7 +89,6 @@ export const loginUser = (username, password) => {
     } catch (e) {
       return dispatch(loginError(e))
     }
-
     if (!login.loggedin) {
       dispatch(loginError(login.error))
     }
@@ -113,14 +112,11 @@ export const registerUser = (username, name, password) => {
     }
 
     if (register.errors) {
-      console.error('register.error' , register.errors);
-      return dispatch(registerError(register.errors))
-      dispatch(loginError(register.errors))
-    }else{
+      dispatch(registerError(register.errors[0].message))
+    }
+    if(!register.errors){
       dispatch(receiveRegister(register));
     }
-
-    
   }
 }
 
