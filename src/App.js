@@ -8,6 +8,7 @@ import Header from './components/header';
 
 import Home from './routes/home';
 import Login from './routes/login';
+import Register from './routes/register'
 import Profile from './routes/profile';
 import NotFound from './routes/not-found';
 /* todo fleiri routes */
@@ -31,6 +32,7 @@ class App extends Component {
           <Switch location={this.props.location}>
             <Route path="/" exact component={Home} />
             <Route path="/login" exact component={Login} />
+            <Route path="/register" exact component={Register} />
             <UserRoute path="/profile" authenticated={authenticated} component={Profile} />
             {/* todo fleiri route */}
             <BookRoute path="/books" exact component={Book} />
