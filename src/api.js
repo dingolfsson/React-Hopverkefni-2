@@ -22,12 +22,6 @@ async function get(endpoint) {
 }
 async function login(username, password) {
 
-  const token = window.localStorage.getItem('token');
-
-  const user = {
-    name: 'Herra admin',
-    username: 'admin',
-  }
   const response = await fetch(baseurl + '/login', {
   method: 'POST',
   headers: {
@@ -38,12 +32,16 @@ async function login(username, password) {
     username: username,
     password: password,
   })
+  
   })
-  console.info(response);
+  const responseJson = await response.json();
+  
+  
   if(response.status === 401){
-    return {error: 'villa komm upp'};
+    return responseJson;
   }
   if(response.status === 200){
+    window.localStorage.setItem('token', responseJson.token);
     return {mesage: 'skráning tókst' };
   }
 
