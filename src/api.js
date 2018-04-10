@@ -65,6 +65,25 @@ async function post(endpoint, data) {
 
   return { result, status: response.status };
 }
+async function register(username, name, password){
+  const response = await fetch(baseurl + '/register', {
+    method: 'POST',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      username: username,
+      name: name,
+      password: password,
+    })
+    })
+    const responseJson = await response.json();
+    if(responseJson.errors){
+      return responseJson;
+    }
+    return responseJson;
+}
 
 async function patch(endpoint, data) {
   const url = `${baseurl}${endpoint}`;
@@ -88,4 +107,5 @@ export default {
   post,
   patch,
   login,
+  register,
 };
