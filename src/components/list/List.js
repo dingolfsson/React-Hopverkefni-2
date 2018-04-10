@@ -6,18 +6,17 @@ import './list.css';
 export default class List extends Component {
   static propTypes = {
     title: PropTypes.string.isRequired,
-    data: PropTypes.element,
-    offset: PropTypes.number,
+    data: PropTypes.array,
+    page: PropTypes.number,
   }
 
   render() {
-    const { title, data } = this.props;
-    const { paging } = this.state;
+    const { title, data, page } = this.props;
+
     return(
       <section className="list">
         <h2>{title}</h2>
         {data}
-        {paging}
       </section>
     )
   }

@@ -65,12 +65,12 @@ export const fetchBooks = (query) => {
     dispatch(requestBooks());
     let books;
     try {
-      books = await api.get('/books' + query);      
+      books = await api.get('/books' + query); 
+           
     } catch (e) {
       return dispatch(booksError(e))
     }
-
-    dispatch(receiveBooks(books.result));
+    dispatch(receiveBooks(books.result));    
   }
 }
 
