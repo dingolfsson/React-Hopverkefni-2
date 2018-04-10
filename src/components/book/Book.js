@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import querystring from 'query-string';
 import { fetchBooks } from '../../actions/books';
-
 
 class Book extends Component {
   state = {
@@ -16,27 +16,28 @@ class Book extends Component {
   }
 
   componentDidMount() {
-    const { dispatch } = this.props;
-    dispatch(fetchBooks());
+    const { dispatch } = this.props;    
+    const query = this.props.location.search || '';
+    dispatch(fetchBooks(query));
   }
 
+
   render() {
-    const { isFetching, books } = this.props;
+    const { isFetching, books } = this.props;    
+    console.log(books);
     
     if (isFetching) {
       return (
-        <p>Sæki minnisatriði..</p>
+        <p>Sæki Gögn..</p>
       );
     }
 
     return (
-      <section>
-        <h2>Bækur</h2>
-        <ul>
-          <p>Im here</p>
-        </ul>
-      </section>
-    );
+      <div>
+      {//<List title="Bækur" listData={bookList} />
+    }
+    </div>
+    )
   }
 }
 
