@@ -80,5 +80,3 @@ export const logoutUser = () => {
 }
 
 /* todo fleiri action */
-
-/* todo async "thunk" fyrir tengingu við vefþjónustu */
