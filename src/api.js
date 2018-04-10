@@ -48,8 +48,6 @@ async function login(username, password) {
   return response;
 }
 
-
-
 /* todo aðrar aðgerðir */
 async function post(endpoint, data) {
   const url = `${baseurl}${endpoint}`;
@@ -76,5 +74,6 @@ async function patch(endpoint, data) {
 
 export default {
   get,
+  post,
   login,
 };
