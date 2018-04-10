@@ -102,10 +102,9 @@ export const loginUser = (username, password) => {
   }
 }
 // Thunk!
-export const registerUser = (username, password, name) => {
+export const registerUser = (username, name, password) => {
   return async (dispatch) => {
     dispatch(requestRegister());
-
     let register;
     try {
       register = await api.register(username, name, password);
@@ -114,6 +113,8 @@ export const registerUser = (username, password, name) => {
     }
 
     if (register.errors) {
+      console.error('register.error' , register.errors);
+      return dispatch(registerError(register.errors))
       dispatch(loginError(register.errors))
     }else{
       dispatch(receiveRegister(register));

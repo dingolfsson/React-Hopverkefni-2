@@ -66,6 +66,7 @@ async function post(endpoint, data) {
   return { result, status: response.status };
 }
 async function register(username, name, password){
+  console.info('api', username, name, password);
   const response = await fetch(baseurl + '/register', {
     method: 'POST',
     headers: {

@@ -11,7 +11,6 @@ class Register extends Component {
 
   handleInputChange = (e) => {
     const { name, value } = e.target;
-
     if (name) {
       this.setState({ [name]: value });
     }
@@ -21,9 +20,8 @@ class Register extends Component {
     e.preventDefault();
 
     const { dispatch } = this.props;
-    const { username, name, password } = this.state;
-
-    dispatch(registerUser(username, name, password));
+    const { username, fname, password } = this.state;
+    dispatch(registerUser(username, fname, password));
   }
 
   render() {
