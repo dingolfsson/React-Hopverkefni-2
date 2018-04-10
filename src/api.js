@@ -86,5 +86,6 @@ async function patch(endpoint, data) {
 export default {
   get,
   post,
+  patch,
   login,
 };

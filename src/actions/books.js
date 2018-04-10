@@ -1,4 +1,4 @@
-import { get, post, patch } from '../api';
+import api from '../api';
 
 export const BOOKS_REQUEST = 'BOOKS_REQUEST';
 export const BOOKS_ERROR = 'BOOKS_ERROR';
@@ -30,10 +30,10 @@ function receiveBooks(books) {
   }
 }
 
+
 export const BOOKS_ADD_REQUEST = 'BOOKS_ADD_REQUEST';
 export const BOOKS_ADD_ERROR = 'BOOKS_ADD_ERROR';
 export const BOOKS_ADD_SUCCESS = 'BOOKS_ADD_SUCCESS';
-
 
 function addingBook(books) {
   return {
@@ -43,7 +43,7 @@ function addingBook(books) {
   }
 }
 
-function addBOOKSError(errors) {
+function addBooksError(errors) {
   return {
     type: BOOKS_ADD_ERROR,
     isAdding: false,
@@ -60,18 +60,18 @@ function receiveAddBook(book) {
   }
 }
 
-export const fetchBOOKS = () => {
+export const fetchBooks = () => {
   return async (dispatch) => {
-    dispatch(requestBOOKS());
+    dispatch(requestBooks());
 
-    let BOOKS;
+    let books;
     try {
-      BOOKS = await get('/');
+      books = await api.get('/');
     } catch (e) {
-      return dispatch(BOOKSError(e))
+      return dispatch(booksError(e))
     }
 
-    dispatch(receiveBOOKS(BOOKS.result));
+    dispatch(receiveBooks(books.result));
   }
 }
 
@@ -81,13 +81,13 @@ export const addBook = (title, text, datetime) => {
 
     let book;
     try {
-      book = await post('/', { title, text, datetime });
+      book = await api.post('/', { title, text, datetime });
     } catch (e) {
-      return dispatch(addBOOKSError([{ message: e }]))
+      return dispatch(addBooksError([{ message: e }]))
     }
 
     if (book.status >= 400) {
-      return dispatch(addBOOKSError(book.result))
+      return dispatch(addBooksError(book.result))
     }
 
     dispatch(receiveAddBook(book.result))
