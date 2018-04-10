@@ -4,16 +4,16 @@ import { fetchBooks } from '../../actions/books';
 
 
 class Book extends Component {
-  // state = {
-  //   visible: null,
-  // }
+  state = {
+    visible: null,
+  }
 
-  // onHeaderClick = (bookId) => {
-  //   return (e) => {
-  //     const visible = this.state.visible === bookId ? null : bookId;
-  //     this.setState({ visible });
-  //   }
-  // }
+  onHeaderClick = (bookId) => {
+    return (e) => {
+      const visible = this.state.visible === bookId ? null : bookId;
+      this.setState({ visible });
+    }
+  }
 
   componentDidMount() {
     const { dispatch } = this.props;
@@ -21,8 +21,8 @@ class Book extends Component {
   }
 
   render() {
-    const { isFetching, notes } = this.props;
-
+    const { isFetching, books } = this.props;
+    
     if (isFetching) {
       return (
         <p>Sæki minnisatriði..</p>
@@ -31,7 +31,7 @@ class Book extends Component {
 
     return (
       <section>
-        <h2>Minnisatriði</h2>
+        <h2>Bækur</h2>
         <ul>
           <p>Im here</p>
         </ul>

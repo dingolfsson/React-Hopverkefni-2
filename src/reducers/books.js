@@ -20,7 +20,7 @@ export default (state = initialState, action) => {
       return {
         ...state,
         isFetching: action.isFetching,
-        notes: action.notes,
+        books: action.books,
         error: action.error,
       };
 
@@ -28,7 +28,7 @@ export default (state = initialState, action) => {
       return {
         ...state,
         isFetching: action.isFetching,
-        notes: action.notes,
+        books: action.books,
         error: action.error,
       };
 
@@ -48,7 +48,7 @@ export default (state = initialState, action) => {
       return {
         ...state,
         isAdding: action.isAdding,
-        notes: [...state.notes, action.note],
+        books: [...state.books, action.book],
         error: action.error,
       };
 

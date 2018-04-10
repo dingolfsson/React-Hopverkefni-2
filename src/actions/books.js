@@ -1,5 +1,4 @@
 import api from '../api';
-//import { get, post, patch } from '../api';
 
 export const BOOKS_REQUEST = 'BOOKS_REQUEST';
 export const BOOKS_ERROR = 'BOOKS_ERROR';
