@@ -8,7 +8,7 @@ class Book extends Component {
 
   render() {
     const query = this.props.location.search || '';
-
+            
     /* todo birta mismunandi upplýsingar ef innskráður notandi eða ekki */
 
     return (

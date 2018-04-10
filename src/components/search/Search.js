@@ -15,9 +15,14 @@ export default class Search extends Component {
     }
   }
 
-  handleChange = (e) => {
+  componentWillReceiveProps(nextProps) {      
+    this.setState({ fireRedirect: false })
+  }
+
+  handleChange = (e) => {    
     this.setState({ value: e.target.value });
   }
+
   handleSubmit = (e) => {    
     e.preventDefault();
     this.setState({ fireRedirect: true })

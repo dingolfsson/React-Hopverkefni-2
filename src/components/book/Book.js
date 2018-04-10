@@ -2,12 +2,14 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import querystring from 'query-string';
 import { fetchBooks } from '../../actions/books';
+import { NavLink } from 'react-router-dom'
 
 import List from '../list';
 
 class Book extends Component {
   state = {
     visible: null,
+    query: ''
   }
 
   onHeaderClick = (bookId) => {
@@ -17,14 +19,16 @@ class Book extends Component {
     }
   }
 
-  componentWillMount() {
+  componentWillMount() {          
     const { dispatch, query } = this.props;
     dispatch(fetchBooks(query));    
   }
- 
-  render() {
-    const { isFetching, books } = this.props;       
 
+
+  render() {
+    
+    const { isFetching, books } = this.props;
+       
     if (isFetching) {
       return (
         <p>Sæki Gögn..</p>
@@ -38,7 +42,10 @@ class Book extends Component {
           data={books.items && (
             books.items.map((i) => (
               <div key={i.id} className="book__item">
-                <h4>{i.title}</h4>
+                <NavLink
+                  to={window.location + '/books/' + i.id}
+                  className="navigation__link"
+                ><h4>{i.title}</h4></NavLink>
                 <p>Eftir {i.author}, gefin út {i.published}</p>
               </div>)))
           }
