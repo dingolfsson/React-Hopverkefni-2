@@ -22,7 +22,7 @@ async function get(endpoint) {
 }
 async function login(username, password) {
 
-  const c = await fetch(baseurl + '/login', {
+  const response = await fetch(baseurl + '/login', {
   method: 'POST',
   headers: {
     'Accept': 'application/json',
@@ -32,9 +32,20 @@ async function login(username, password) {
     username: username,
     password: password,
   })
-  });
-  console.info(c);
-  return c;
+  
+  })
+  const responseJson = await response.json();
+  
+  
+  if(response.status === 401){
+    return responseJson;
+  }
+  if(response.status === 200){
+    window.localStorage.setItem('token', responseJson.token);
+    return {mesage: 'skráning tókst' };
+  }
+
+  return response;
 }
 
 
