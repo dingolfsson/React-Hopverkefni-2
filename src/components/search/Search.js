@@ -8,24 +8,20 @@ import './search.css';
 
 export default class Search extends Component {
 
-  // static propTypes = {
-  //   onClick: PropTypes.func,
-  //   children: PropTypes.node,
-  // }
+  state = { value: '' }
 
-  static defaultProps = {
-    className: '',
-    onClick: () => {},
+  handleChange = (e) => {
+    this.setState({ value: e.target.value });
   }
-
-  onClick = (e) => {
-    console.log('leita');
+  handleSubmit = (e) => {
+    e.preventDefault();
+    alert(this.state.value);
   }
 
   render() {
     return (
-      <form>
-        <input type="text" name="search" />
+      <form onSubmit={this.handleSubmit}>
+        <input type="text" name="search" value={this.state.value} onChange={this.handleChange}/>
         <input type="submit" value="Leita" onClick={this.onClick} />
       </form>
     );

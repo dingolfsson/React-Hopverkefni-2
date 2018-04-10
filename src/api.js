@@ -69,7 +69,18 @@ async function post(endpoint, data) {
 async function patch(endpoint, data) {
   const url = `${baseurl}${endpoint}`;
 
-  //TODO 
+  const options = {
+    body: JSON.stringify(data),
+    headers: {
+      'content-type': 'application/json',
+    },
+    method: 'PATCH',
+  };
+
+  const response = await fetch(url, options);
+  const result = await response.json();
+
+  return { result, status: response.status };
 }
 
 export default {
