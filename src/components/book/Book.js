@@ -8,7 +8,6 @@ import List from '../list';
 
 class Book extends Component {
   state = {
-    visible: null,
     query: ''
   }
 
