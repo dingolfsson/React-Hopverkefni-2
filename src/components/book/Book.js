@@ -12,18 +12,10 @@ class Book extends Component {
     query: ''
   }
 
-  onHeaderClick = (bookId) => {
-    return (e) => {
-      const visible = this.state.visible === bookId ? null : bookId;
-      this.setState({ visible });
-    }
-  }
-
   componentWillMount() {          
     const { dispatch, query } = this.props;
     dispatch(fetchBooks(query));    
   }
-
 
   render() {
     
