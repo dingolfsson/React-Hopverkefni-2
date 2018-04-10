@@ -43,7 +43,7 @@ class Book extends Component {
           />
     </div>
     )
-}
+  }
 }
 
 const mapStateToProps = (state) => {
