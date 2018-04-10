@@ -113,9 +113,11 @@ export const registerUser = (username, name, password) => {
 
     if (register.errors) {
       dispatch(registerError(register.errors[0].message))
+      return false;
     }
     if(!register.errors){
       dispatch(receiveRegister(register));
+      return true;
     }
   }
 }

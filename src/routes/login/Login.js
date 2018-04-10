@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Route, Redirect } from 'react-router';
 import { connect } from 'react-redux';
 import { loginUser, logoutUser } from '../../actions/auth';
 
@@ -36,7 +37,7 @@ class Login extends Component {
 
     if (isAuthenticated) {
       return (
-        <button onClick={this.handleLogout}>Útskrá</button>
+        <Redirect push to="/"/>
       );
     }
 

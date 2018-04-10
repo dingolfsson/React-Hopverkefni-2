@@ -21,14 +21,16 @@ class Register extends Component {
 
     const { dispatch } = this.props;
     const { username, fname, password } = this.state;
-    dispatch(registerUser(username, fname, password));
+    let c = await dispatch(registerUser(username, fname, password));
+    if(c){
+      this.props.history.push('/login');
+    }
   }
 
   render() {
     const { username, fname, password } = this.state;
     const { isFetching, isAuthenticated, message } = this.props;
 
-    console.info('wow', message);
     if (isFetching) {
       return (
         <p>Búa til notenda <em>{username}</em>...</p>
