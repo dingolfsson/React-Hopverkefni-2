@@ -42,7 +42,7 @@ async function login(username, password) {
   }
   if(response.status === 200){
     window.localStorage.setItem('token', responseJson.token);
-    return {mesage: 'skráning tókst' };
+    return {user: responseJson.user, loggedin: true };
   }
 
   return response;
