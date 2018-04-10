@@ -22,13 +22,7 @@ async function get(endpoint) {
 }
 async function login(username, password) {
 
-  const token = window.localStorage.getItem('token');
-
-  const user = {
-    name: 'Herra admin',
-    username: 'admin',
-  }
-  const c = await fetch(baseurl + 'login', {
+  const response = await fetch(baseurl + '/login', {
   method: 'POST',
   headers: {
     'Accept': 'application/json',
@@ -38,26 +32,20 @@ async function login(username, password) {
     username: username,
     password: password,
   })
-  })
-  console.info(c);
-
   
-/*
-    if (username === 'error') {
-      return reject('Villa');
-    }
+  })
+  const responseJson = await response.json();
+  
+  
+  if(response.status === 401){
+    return responseJson;
+  }
+  if(response.status === 200){
+    window.localStorage.setItem('token', responseJson.token);
+    return {mesage: 'skráning tókst' };
+  }
 
-    if (username === 'admin' && password === '123') {
-      return setTimeout(() => resolve({ loggedin: true, user }), 1000);
-    }
-
-    if (username !== 'admin') {
-      return setTimeout(() => resolve({ loggedin: false, error: 'Notandi ekki til' }), 500);
-    }
-
-    return setTimeout(() => resolve({ loggedin: false, error: 'Vitlaust lykilorð' }), 500);
-  });*/
-  return c;
+  return response;
 }
 
 
