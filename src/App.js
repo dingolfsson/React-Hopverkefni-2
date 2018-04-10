@@ -13,7 +13,7 @@ import Profile from './routes/profile';
 import NotFound from './routes/not-found';
 /* todo fleiri routes */
 import Book from './routes/book';
-import BookRoute from './components/book';
+import Form from './routes/form';
 
 import './App.css';
 
@@ -34,8 +34,8 @@ class App extends Component {
             <Route path="/login" exact component={Login} />
             <Route path="/register" exact component={Register} />
             <UserRoute path="/profile" authenticated={authenticated} component={Profile} />
-            <BookRoute path="/books" exact component={Book} />
-            <BookRoute path="/books/new" exact component={Book} />
+            <Route path="/books" exact component={Book} />
+            <Route path="/books/new" authenticated={authenticated} component={Form} />
             <Route component={NotFound} />
           </Switch>
         </div>

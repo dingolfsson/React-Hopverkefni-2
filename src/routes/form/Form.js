@@ -1,16 +1,16 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import Book from '../../components/book';
+import BookForm from '../../components/form';
 
-class Books extends Component {
+class Form extends Component {
 
   render() {
     return (
       <div>
-        <Book />
+        <BookForm />
       </div>
     );
   }
 }
 
-export default Books;
+export default Form;

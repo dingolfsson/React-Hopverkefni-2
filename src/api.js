@@ -20,6 +20,7 @@ async function get(endpoint) {
 
   return { result, status: response.status };
 }
+
 async function login(username, password) {
 
   const response = await fetch(baseurl + '/login', {
@@ -52,6 +53,8 @@ async function login(username, password) {
 async function post(endpoint, data) {
   const url = `${baseurl}${endpoint}`;
 
+  const token = window.localStorage.getItem('token');
+
   const options = {
     body: JSON.stringify(data),
     headers: {
@@ -59,6 +62,10 @@ async function post(endpoint, data) {
     },
     method: 'POST',
   };
+  
+  if (token) {
+    options.headers['Authorization'] = `Bearer ${token}`;
+  }
 
   const response = await fetch(url, options);
   const result = await response.json();
@@ -85,7 +92,7 @@ async function register(username, name, password){
     return responseJson;
 }
 
-async function patch(endpoint, data) {
+async function patch(endpoint, data, id) {
   const url = `${baseurl}${endpoint}`;
 
   const options = {
