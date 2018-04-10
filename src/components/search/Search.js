@@ -34,7 +34,7 @@ export default class Search extends Component {
           <input type="submit" value="Leita" onClick={this.onClick} />
         </form>
         {fireRedirect && (
-          <Redirect to={from} />
+          <Redirect to={from + '?search=' + this.state.value} />
         )}
       </div>
     );

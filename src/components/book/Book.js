@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import querystring from 'query-string';
 import { fetchBooks } from '../../actions/books';
 
+import List from '../list';
+
 class Book extends Component {
   state = {
     visible: null,
@@ -23,9 +25,7 @@ class Book extends Component {
 
 
   render() {
-    const { isFetching, books } = this.props;    
-    console.log(books);
-    
+    const { isFetching, books } = this.props;        
     if (isFetching) {
       return (
         <p>Sæki Gögn..</p>
@@ -34,8 +34,7 @@ class Book extends Component {
 
     return (
       <div>
-      {//<List title="Bækur" listData={bookList} />
-    }
+      <List title="Bækur" data={<p>hello</p>} />
     </div>
     )
   }
@@ -48,5 +47,7 @@ const mapStateToProps = (state) => {
     error: state.books.error,
   }
 }
+
+
 
 export default connect(mapStateToProps)(Book);
