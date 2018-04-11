@@ -11,9 +11,9 @@ class Book extends Component {
     query: ''
   }
 
-  componentWillMount() {          
+  componentDidMount() {          
     const { dispatch, query } = this.props;
-    dispatch(fetchBooks(query));    
+    dispatch(fetchBooks(query));
   }
 
   render() {

@@ -15,7 +15,11 @@ export default class Search extends Component {
     }
   }
 
-  componentWillReceiveProps(nextProps) {      
+  componentWillReceiveProps(nextProps) {   
+    console.log("will receive props");
+    
+    console.log(nextProps);
+       
     this.setState({ fireRedirect: false })
   }
 
@@ -23,15 +27,17 @@ export default class Search extends Component {
     this.setState({ value: e.target.value });
   }
 
-  handleSubmit = (e) => {    
+  handleSubmit = (e) => {        
     e.preventDefault();
     this.setState({ fireRedirect: true })
   }
 
+
   render() {
     const from = '/books'
     const { fireRedirect } = this.state
-
+    console.log("fireRedirect", fireRedirect);
+    
     return (
       <div>
         <form onSubmit={this.handleSubmit}>
@@ -39,8 +45,9 @@ export default class Search extends Component {
           <input type="submit" value="Leita" onClick={this.onClick} />
         </form>
         {fireRedirect && (
-          <Redirect to={from + '?search=' + this.state.value} />
-        )}
+          <Redirect to={{ pathname: from, search:`?search=${this.state.value}`}} />
+        )
+        } 
       </div>
     );
   }
