@@ -20,7 +20,8 @@ import './App.css';
 class App extends Component {
 
   render() {
-    const authenticated = false; /* vita hvort notandi sé innskráður */
+    const authenticated = this.props.auth.isAuthenticated; /* vita hvort notandi sé innskráður */
+    console.info();
 
     return (
       <main className="main">
@@ -33,7 +34,7 @@ class App extends Component {
             <Route path="/" exact component={Home} />
             <Route path="/login" exact component={Login} />
             <Route path="/register" exact component={Register} />
-            <UserRoute path="/profile" authenticated={authenticated} component={Profile} />
+            <Route path="/profile" authenticated={authenticated} exact component={Profile} />
             <Route path="/books" exact component={Book} />
             <Route path="/books/new" authenticated={authenticated} component={Form} />
             <Route component={NotFound} />

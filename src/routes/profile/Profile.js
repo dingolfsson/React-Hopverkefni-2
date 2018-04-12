@@ -1,25 +1,18 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
+import Profile from '../../components/profile';
 
-class Profile extends Component {
+class Profiles extends Component {
 
   render() {
     return (
       <div>
-        <h1>Upplýsingar</h1>
+        <Profile />
       </div>
     );
   }
 }
 
-const mapStateToProps = (state) => {
-  console.log(state);
-  return {
-    isFetching: state.auth.isFetching,
-    isAuthenticated: state.auth.isAuthenticated,
-    message: state.auth.message,
-    name: state.auth.user ? state.auth.user.name : '',
-  }
-}
+export default Profiles;
 
-export default connect(mapStateToProps)(Profile);
