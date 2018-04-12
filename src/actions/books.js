@@ -60,13 +60,42 @@ function receiveAddBook(book) {
   }
 }
 
+export const BOOKS_UPDATE_REQUEST = 'BOOKS_UPDATE_REQUEST';
+export const BOOKS_UPDATE_ERROR = 'BOOKS_UPDATE_ERROR';
+export const BOOKS_UPDATE_SUCCESS = 'BOOKS_UPDATE_SUCCESS';
+
+function updatingBook(books) {
+  return {
+    type: BOOKS_UPDATE_REQUEST,
+    isUpdating: false,
+    errors: null,
+  }
+}
+
+function updateBooksError(errors) {
+  return {
+    type: BOOKS_UPDATE_ERROR,
+    isUpdating: false,
+    errors,
+  }
+}
+
+function receiveUpdateBook(book) {
+  return {
+    type: BOOKS_UPDATE_SUCCESS,
+    isUpdating: false,
+    book,
+    errors: null,
+  }
+}
+
 export const fetchBooks = () => {
   return async (dispatch) => {
     dispatch(requestBooks());
 
     let books;
     try {
-      books = await api.get('/');
+      books = await api.get('/books');
     } catch (e) {
       return dispatch(booksError(e))
     }
@@ -75,13 +104,12 @@ export const fetchBooks = () => {
   }
 }
 
-export const addBook = (title, text, datetime) => {
+export const addBook = (data) => {
   return async (dispatch) => {
     dispatch(addingBook());
-
     let book;
     try {
-      book = await api.post('/', { title, text, datetime });
+      book = await api.post('/books', { ...data });
     } catch (e) {
       return dispatch(addBooksError([{ message: e }]))
     }
@@ -91,5 +119,24 @@ export const addBook = (title, text, datetime) => {
     }
 
     dispatch(receiveAddBook(book.result))
+  }
+}
+
+export const updateBook = (title, author, description, isbn10, isbn13, category, published, pagecount, language, categorytitle) => {
+  return async (dispatch) => {
+    dispatch(updatingBook());
+
+    let book;
+    try {
+      book = await api.patch('/books/:id/edit', { title, author, description, isbn10, isbn13, category, published, pagecount, language, categorytitle });
+    } catch (e) {
+      return dispatch(updateBooksError([{ message: e }]))
+    }
+
+    if (book.status >= 400) {
+      return dispatch(updateBooksError(book.result))
+    }
+
+    dispatch(receiveUpdateBook(book.result))
   }
 }

@@ -4,16 +4,7 @@ import { fetchBooks } from '../../actions/books';
 
 
 class Book extends Component {
-  state = {
-    visible: null,
-  }
-
-  onHeaderClick = (bookId) => {
-    return (e) => {
-      const visible = this.state.visible === bookId ? null : bookId;
-      this.setState({ visible });
-    }
-  }
+  state = {}
 
   componentDidMount() {
     const { dispatch } = this.props;
