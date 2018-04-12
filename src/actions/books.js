@@ -62,15 +62,17 @@ function receiveAddBook(book) {
 
 export const fetchBooks = (query) => {
   return async (dispatch) => {
+    console.info(query[0]);
     dispatch(requestBooks());
     let books;
     try {
-      books = await api.get('/books' + query); 
-           
+      console.log('/books?offset=0&search=' + query[0]);
+      books = await api.get('/books?offset=0&search=' + query[0]); 
+      console.info('books', books);     
     } catch (e) {
       return dispatch(booksError(e))
     }
-    dispatch(receiveBooks(books.result));    
+    dispatch(receiveBooks(books.result));
   }
 }
 

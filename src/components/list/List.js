@@ -10,6 +10,19 @@ export default class List extends Component {
     page: PropTypes.number,
   }
 
+  static getDerivedStateFromProps(nextProps, prevState) {
+    console.log('getDerivedStateFromProps');
+    if (nextProps.value !== prevState.value) {
+        return {
+            previousChildren: nextProps.children,
+            pointerEvents: false,
+            value: nextProps,
+        };
+    }
+
+    return null;
+}
+
   render() {
     const { title, data, page } = this.props;
 

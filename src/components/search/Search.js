@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import Button from '../button';
 
 import './search.css';
+import Book from '../book';
 
 export default class Search extends Component {
   constructor() {
@@ -30,6 +31,7 @@ export default class Search extends Component {
   handleSubmit = (e) => {        
     e.preventDefault();
     this.setState({ fireRedirect: true })
+
   }
 
 
@@ -44,8 +46,9 @@ export default class Search extends Component {
           <input type="text" name="search" value={this.state.value} onChange={this.handleChange}/>
           <input type="submit" value="Leita" onClick={this.onClick} />
         </form>
+        
         {fireRedirect && (
-          <Redirect to={{ pathname: from, search:`?search=${this.state.value}`}} />
+          <Book query={[this.state.value]} />
         )
         } 
       </div>

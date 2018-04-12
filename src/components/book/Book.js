@@ -16,16 +16,23 @@ class Book extends Component {
     dispatch(fetchBooks(query));
   }
 
+componentDidUpdate(prevProps, prevState) {
+  if(prevProps.query != this.props.query){
+    const { dispatch, query } = this.props;
+    dispatch(fetchBooks(query));
+  }
+}
+
   render() {
     
     const { isFetching, books } = this.props;
-       
+    
     if (isFetching) {
       return (
         <p>Sæki Gögn..</p>
       );
     }
-    
+    console.info(books);
     return (
       <div>
         <List 
