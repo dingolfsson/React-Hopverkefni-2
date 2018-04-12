@@ -8,23 +8,15 @@ import List from '../list';
 
 class Book extends Component {
   state = {
-    query: ''
+    search: ''
   }
 
-  componentDidMount() {          
-    const { dispatch, query } = this.props;
-    dispatch(fetchBooks(query));
+  componentDidMount() {   
+    const { dispatch, search } = this.props;
+    dispatch(fetchBooks(search));
   }
-
-componentDidUpdate(prevProps, prevState) {
-  if(prevProps.query != this.props.query){
-    const { dispatch, query } = this.props;
-    dispatch(fetchBooks(query));
-  }
-}
-
+  
   render() {
-    
     const { isFetching, books } = this.props;
     
     if (isFetching) {
@@ -32,7 +24,7 @@ componentDidUpdate(prevProps, prevState) {
         <p>Sæki Gögn..</p>
       );
     }
-    console.info(books);
+
     return (
       <div>
         <List 
