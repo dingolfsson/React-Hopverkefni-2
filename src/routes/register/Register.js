@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { registerUser } from '../../actions/auth';
+import { Link } from 'react-router-dom';
 
 class Register extends Component {
   state = {
@@ -61,6 +62,7 @@ class Register extends Component {
           </div>
 
           <button disabled={isFetching}>Innskrá</button>
+          <p><Link to="/login">Innskráning</Link></p>
         </form>
       </div>
     );
