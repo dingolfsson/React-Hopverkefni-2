@@ -121,6 +121,7 @@ export const fetchUserBooks = () => {
 }
 
 export const addBook = (data) => {
+  data.category = Number(data.category);
   return async (dispatch) => {
     dispatch(addingBook());
     let book;
