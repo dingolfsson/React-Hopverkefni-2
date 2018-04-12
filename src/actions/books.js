@@ -105,6 +105,7 @@ export const fetchBooks = () => {
 }
 
 export const addBook = (data) => {
+  data.category = Number(data.category);
   return async (dispatch) => {
     dispatch(addingBook());
     let book;
@@ -115,6 +116,7 @@ export const addBook = (data) => {
     }
 
     if (book.status >= 400) {
+      console.log(book.result)
       return dispatch(addBooksError(book.result))
     }
 
