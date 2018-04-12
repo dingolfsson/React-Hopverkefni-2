@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Route, Redirect } from 'react-router';
 import { connect } from 'react-redux';
 import { loginUser, logoutUser } from '../../actions/auth';
+import { Link } from 'react-router-dom';
 
 class Login extends Component {
   state = {
@@ -66,6 +67,7 @@ class Login extends Component {
           </div>
 
           <button disabled={isFetching}>Innskrá</button>
+          <p><Link to="/register">Nýskráning</Link></p>
         </form>
       </div>
     );

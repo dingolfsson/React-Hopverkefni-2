@@ -7,7 +7,7 @@ export default ({component: Component, authenticated, ...rest}) => {
       {...rest}
       render={(props) => authenticated
         ? <Component {...props} />
-        : <Redirect to={{pathname: '/login', state: {from: props.location}}} />}
+        : <Redirect to={{pathname: '/profile', state: {from: props.location}}} />}
     />
   )
 }
