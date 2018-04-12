@@ -116,7 +116,6 @@ export const addBook = (data) => {
     }
 
     if (book.status >= 400) {
-      console.log(book.result)
       return dispatch(addBooksError(book.result))
     }
 

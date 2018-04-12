@@ -41,6 +41,7 @@ class Form extends Component {
   render() {
     const data = { ...this.state };
     const { isAdding, errors, isFetching, categories } = this.props;
+
     if(isAdding) {
       return (
         <p>Skrái atriði...</p>
@@ -55,13 +56,13 @@ class Form extends Component {
 
     return (
       <div>              
-        {/* {errors && (
-          <ul>{errors.map((error, i) => (
+        {errors.errors && (
+          <ul>{errors.errors.map((error, i) => (
             <li key={i}>
               {error.message}
             </li>
           ))}</ul>
-        )} */}
+        )}
         <form onSubmit={this.handleSubmit}>
 
           <div>
