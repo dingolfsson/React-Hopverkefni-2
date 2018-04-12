@@ -5,7 +5,7 @@ export default class List extends Component {
   static propTypes = {
     title: PropTypes.string,
     username: PropTypes.string.isRequired,
-    name: PropTypes.string.isRequired,
+    name: PropTypes.array.isRequired,
     id: PropTypes.number,
   }
 
@@ -23,12 +23,12 @@ export default class List extends Component {
 }
 
   render() {
-    const { title, username, name, id } = this.props;
+    const { data, title, username, name, id } = this.props;
 
     return(
       <section className="list">
         <h2>{title}</h2>
-        { name }
+        { data }
       </section>
     )
   }

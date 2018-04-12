@@ -28,9 +28,9 @@ class User extends Component {
       <div>
         <List 
           title="Notendur" 
-          name={users.items && (
+          data={users.items && (
             users.items.map((i) => (
-              <div key={i.name} className="book__item">
+              <div key={i.name} className="user__item">
                 <NavLink
                   to={window.location + '/' + i.id}
                   className="navigation__link"
