@@ -7,7 +7,7 @@ class Form extends Component {
   render() {
     return (
       <div>
-        <BookForm />
+        <BookForm slug={this.props.location} />
       </div>
     );
   }

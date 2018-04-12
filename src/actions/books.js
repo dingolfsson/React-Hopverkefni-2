@@ -139,13 +139,13 @@ export const addBook = (data) => {
   }
 }
 
-export const updateBook = (title, author, description, isbn10, isbn13, category, published, pagecount, language, categorytitle) => {
+export const updateBook = (data, id) => {
+  data.category = Number(data.category);
   return async (dispatch) => {
     dispatch(updatingBook());
-
     let book;
     try {
-      book = await api.patch('/books/:id/edit', { title, author, description, isbn10, isbn13, category, published, pagecount, language, categorytitle });
+      book = await api.patch('/books/'+ id , { ...data });
     } catch (e) {
       return dispatch(updateBooksError([{ message: e }]))
     }
