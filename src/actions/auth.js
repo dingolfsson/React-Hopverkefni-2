@@ -90,11 +90,12 @@ export const loginUser = (username, password) => {
       return dispatch(loginError(e))
     }
     if (!login.loggedin) {
-      dispatch(loginError(login.error))
+      return dispatch(loginError(login.error))
     }
 
     if (login.loggedin) {
       const { user } = login;
+      console.info(login);
       localStorage.setItem('user', JSON.stringify(user));
       dispatch(receiveLogin(user));
     }
