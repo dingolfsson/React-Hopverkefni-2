@@ -104,6 +104,22 @@ export const fetchBooks = () => {
   }
 }
 
+export const fetchUserBooks = () => {
+  return async (dispatch) => {
+    dispatch(requestBooks());
+
+    let books;
+    try {
+      books = await api.get('/users/me/read');
+      console.info(books);
+    } catch (e) {
+      return dispatch(booksError(e))
+    }
+
+    dispatch(receiveBooks(books.result));
+  }
+}
+
 export const addBook = (data) => {
   return async (dispatch) => {
     dispatch(addingBook());

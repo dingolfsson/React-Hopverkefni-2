@@ -9,6 +9,7 @@ import Header from './components/header';
 import Home from './routes/home';
 import Login from './routes/login';
 import Register from './routes/register'
+import User from './routes/user'
 import Profile from './routes/profile';
 import NotFound from './routes/not-found';
 /* todo fleiri routes */
@@ -35,6 +36,7 @@ class App extends Component {
             <Route path="/login" exact component={Login} />
             <Route path="/register" exact component={Register} />
             <Route path="/profile" authenticated={authenticated} exact component={Profile} />
+            <Route path="/users" authenticated={authenticated} component={User} />
             <Route path="/books" exact component={Book} />
             <Route path="/books/new" authenticated={authenticated} component={Form} />
             <Route component={NotFound} />
