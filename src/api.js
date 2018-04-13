@@ -57,36 +57,55 @@ async function post(endpoint, data) {
   const url = `${baseurl}${endpoint}`;
 
   const token = window.localStorage.getItem('token');
-  let options;
-  if(!data){
-    options = {
-      body: JSON.stringify(data),
-      headers: {
-        'content-type': 'application/json',
-      },
-      method: 'POST',
-    };
-  }else{
-    console.info(data);
-    options = {
-      body: data,
-      headers: {
-        'content-type': 'application/file',
-      },
-      method: 'POST',
-    };
-  }
-  
-  
+  const options = {
+    body: JSON.stringify(data),
+    headers: {
+      'content-type': 'application/json',
+    },
+    method: 'POST',
+  };
   if (token) {
     options.headers['Authorization'] = `Bearer ${token}`;
   }
 
   const response = await fetch(url, options);
-  const result = await response.json();
 
+  const result = await response.json();
   return { result, status: response.status };
 }
+
+async function photo(endpoint, data) {
+  console.info('response result');
+
+  const token = window.localStorage.getItem('token');
+  const url = `${baseurl}${endpoint}`;
+
+  var form = new FormData();
+   form.append("file", "/home/alexander/Pictures/Untitled.png");
+    
+  const options = {
+    headers: {
+      "Content-Type": "application/x-www-form-urlencoded",
+    },
+    "processData": false,
+    "contentType": false,
+    "mimeType": "multipart/form-data",
+    data: form,
+    'content-type': 'multipart/form-data',
+    method: 'POST',
+    };
+
+    if (token) {
+      options.headers['Authorization'] = `Bearer ${token}`;
+    }
+    const response = await fetch(url, options);
+
+    const result = await response.json();
+    return { result, status: response.status };
+  
+}
+
+
 
 async function register(username, name, password){
   const response = await fetch(baseurl + '/register', {
@@ -137,4 +156,5 @@ export default {
   patch,
   login,
   register,
+  photo,
 };

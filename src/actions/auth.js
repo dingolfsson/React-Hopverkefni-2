@@ -135,9 +135,15 @@ export const updatePhoto = (file) => {
     dispatch(requestRegister());
     let update;
     try{
-      update = api.post('/users/me/profile', file);
-    }catch (e){
+      update = await api.photo('/users/me/profile', file);
+    }catch(e){
+      console.info(e);
       return dispatch(registerError());
+    }
+    if(update.result.error){
+      dispatch(registerError());
+    }else{
+      dispatch(registerUser());
     }
   }
 }
