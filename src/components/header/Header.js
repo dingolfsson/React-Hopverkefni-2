@@ -3,8 +3,8 @@ import { connect } from 'react-redux';
 
 import { Link } from 'react-router-dom';
 
+import Search from '../search';
 import Button from '../button';
-
 import { loginUser, logoutUser } from '../../actions/auth';
 
 import './Header.css';
@@ -16,9 +16,6 @@ class Header extends Component {
     dispatch(logoutUser());
   }
 
-  onClick = (e) => {
-    console.log('leita');
-  }
 
   render() {
     const { name } = this.props;
@@ -28,7 +25,7 @@ class Header extends Component {
           <h1 className="header__heading"><Link to="/">Bókasafnið</Link></h1>
   
           {/* ætti samt frekar heima í sér component */}
-          <Button onClick={this.onClick}>Leita</Button>
+          <Search />
           <Link to="/profile">{ name }</Link>
           <Button onClick={this.handleLogout}>Logout</Button>
         </header>
@@ -38,9 +35,8 @@ class Header extends Component {
       <header className="header">
         <h1 className="header__heading"><Link to="/">Bókasafnið</Link></h1>
 
-        {/* ætti samt frekar heima í sér component */}
-        <Button onClick={this.onClick}>Leita</Button>
-
+        <Search />
+        
         <Link to="/login">Innskráning</Link>
       </header>
     );

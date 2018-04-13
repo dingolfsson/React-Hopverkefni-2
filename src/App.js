@@ -12,7 +12,6 @@ import Register from './routes/register'
 import User from './routes/user'
 import Profile from './routes/profile';
 import NotFound from './routes/not-found';
-/* todo fleiri routes */
 import Book from './routes/book';
 import Form from './routes/form';
 
