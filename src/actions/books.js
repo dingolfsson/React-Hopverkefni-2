@@ -89,13 +89,29 @@ function receiveUpdateBook(book) {
   }
 }
 
-export const fetchBooks = () => {
+export const fetchBooks = (query) => {
+  console.log(query);
+  
+  return async (dispatch) => {
+    dispatch(requestBooks());
+    let books;
+    try {
+      books = await api.get('/books' + query);       
+    } catch (e) {
+      return dispatch(booksError(e))
+    }
+    dispatch(receiveBooks(books.result));
+  }
+}
+
+export const fetchUserBooks = () => {
   return async (dispatch) => {
     dispatch(requestBooks());
 
     let books;
     try {
-      books = await api.get('/books');
+      books = await api.get('/users/me/read');
+      console.info(books);
     } catch (e) {
       return dispatch(booksError(e))
     }
@@ -105,6 +121,7 @@ export const fetchBooks = () => {
 }
 
 export const addBook = (data) => {
+  data.category = Number(data.category);
   return async (dispatch) => {
     dispatch(addingBook());
     let book;
@@ -122,13 +139,13 @@ export const addBook = (data) => {
   }
 }
 
-export const updateBook = (title, author, description, isbn10, isbn13, category, published, pagecount, language, categorytitle) => {
+export const updateBook = (data, id) => {
+  data.category = Number(data.category);
   return async (dispatch) => {
     dispatch(updatingBook());
-
     let book;
     try {
-      book = await api.patch('/books/:id/edit', { title, author, description, isbn10, isbn13, category, published, pagecount, language, categorytitle });
+      book = await api.patch('/books/'+ id , { ...data });
     } catch (e) {
       return dispatch(updateBooksError([{ message: e }]))
     }

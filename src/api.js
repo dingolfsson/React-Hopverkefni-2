@@ -3,7 +3,6 @@ const baseurl = process.env.REACT_APP_SERVICE_URL;
 async function get(endpoint) {
 
   const token = window.localStorage.getItem('token');
-  console.log(token)
   const url = `${baseurl}${endpoint}`;
 
   const options = {
@@ -20,7 +19,7 @@ async function get(endpoint) {
     response = await fetch(url, options);
     result = await response.json();
   } catch (err) {
-    console.info("err");
+    console.error("err");
   }
   return { result, status: response.status };
 }
@@ -46,7 +45,6 @@ async function login(username, password) {
     return responseJson;
   }
   if(response.status === 200){
-    console.info(responseJson.token);
     window.localStorage.setItem('token', responseJson.token);
     return {user: responseJson.user, loggedin: true };
   }
@@ -89,6 +87,7 @@ async function post(endpoint, data) {
 
   return { result, status: response.status };
 }
+
 async function register(username, name, password){
   const response = await fetch(baseurl + '/register', {
     method: 'POST',
@@ -109,8 +108,10 @@ async function register(username, name, password){
     return responseJson;
 }
 
-async function patch(endpoint, data, id) {
+async function patch(endpoint, data) {
   const url = `${baseurl}${endpoint}`;
+
+  const token = window.localStorage.getItem('token');
 
   const options = {
     body: JSON.stringify(data),
@@ -119,6 +120,10 @@ async function patch(endpoint, data, id) {
     },
     method: 'PATCH',
   };
+
+  if (token) {
+    options.headers['Authorization'] = `Bearer ${token}`;
+  }
 
   const response = await fetch(url, options);
   const result = await response.json();

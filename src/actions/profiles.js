@@ -96,6 +96,22 @@ export const fetchProfiles = () => {
     let profiles;
     try {
       profiles = await api.get('/users/me');
+      console.info(profiles)
+    } catch (e) {
+      return dispatch(profilesError(e))
+    }
+
+    dispatch(receiveProfiles(profiles.result));
+  }
+}
+
+export const fetchReadProfilesBooks = () => {
+  return async (dispatch) => {
+    dispatch(requestsProfiles());
+    
+    let profiles;
+    try {
+      profiles = await api.get('/users/me/read');
     } catch (e) {
       return dispatch(profilesError(e))
     }

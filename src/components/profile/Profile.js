@@ -13,6 +13,7 @@ class Profile extends Component {
 
   render() {
     const { isFetching, profiles } = this.props;
+    console.info(this.props)
     if (isFetching) {
       return (
         <p>Sæki minnisatriði..</p>

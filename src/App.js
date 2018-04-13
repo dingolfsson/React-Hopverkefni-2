@@ -9,9 +9,9 @@ import Header from './components/header';
 import Home from './routes/home';
 import Login from './routes/login';
 import Register from './routes/register'
+import User from './routes/user'
 import Profile from './routes/profile';
 import NotFound from './routes/not-found';
-/* todo fleiri routes */
 import Book from './routes/book';
 import Form from './routes/form';
 import Image from './routes/image';
@@ -37,8 +37,9 @@ class App extends Component {
             <Route path="/register" exact component={Register} />
             <Route path="/profile" authenticated={authenticated} exact component={Profile} />
             <Route path="/profile/image" authenticated={authenticated} exact component={Image} />
+            <Route path="/users" authenticated={authenticated} component={User} />
             <Route path="/books" exact component={Book} />
-            <Route path="/books/new" authenticated={authenticated} component={Form} />
+            <Route path="/books" authenticated={authenticated} component={Form} />
             <Route component={NotFound} />
           </Switch>
         </div>
