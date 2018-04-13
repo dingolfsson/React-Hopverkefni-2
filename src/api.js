@@ -59,14 +59,26 @@ async function post(endpoint, data) {
   const url = `${baseurl}${endpoint}`;
 
   const token = window.localStorage.getItem('token');
-
-  const options = {
-    body: JSON.stringify(data),
-    headers: {
-      'content-type': 'application/json',
-    },
-    method: 'POST',
-  };
+  let options;
+  if(!data){
+    options = {
+      body: JSON.stringify(data),
+      headers: {
+        'content-type': 'application/json',
+      },
+      method: 'POST',
+    };
+  }else{
+    console.info(data);
+    options = {
+      body: data,
+      headers: {
+        'content-type': 'application/file',
+      },
+      method: 'POST',
+    };
+  }
+  
   
   if (token) {
     options.headers['Authorization'] = `Bearer ${token}`;

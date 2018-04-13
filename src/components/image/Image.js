@@ -1,14 +1,27 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchProfiles } from '../../actions/profiles';
+import { updatePhoto } from '../../actions/auth';
 
 
 class Image extends Component {
-  state = {}
+  state = {
+    file: null,
+  }
 
-  componentDidMount() {
+
+  handleInputChange = (e) => {
+    const { name, value } = e.target;
+    if (name) {
+      this.setState({ [name]: e.target.files[0] });
+    }
+  }
+
+  handleSubmit = async (e) => {
+    e.preventDefault();
+
     const { dispatch } = this.props;
-    dispatch(fetchProfiles());
+    const data = { ...this.state };
+    dispatch(updatePhoto(data));
   }
 
   render() {
@@ -22,6 +35,12 @@ class Image extends Component {
     return (
       <section>
         <h2>uppfæra mynd</h2>
+        <form onSubmit={this.handleSubmit}>
+          <div>
+            <input type="file" name="file" accept="image/*" onChange={this.handleInputChange}/>
+          </div>
+           <button>Skrá</button>
+        </form>    
       </section>
     );
   }

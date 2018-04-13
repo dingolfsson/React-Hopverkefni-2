@@ -130,4 +130,16 @@ export const logoutUser = () => {
   }
 }
 
+export const updatePhoto = (file) => {
+  return async (dispatch) => {
+    dispatch(requestRegister());
+    let update;
+    try{
+      update = api.post('/users/me/profile', file);
+    }catch (e){
+      return dispatch(registerError());
+    }
+  }
+}
+
 /* todo fleiri action */
