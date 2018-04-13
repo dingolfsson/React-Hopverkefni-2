@@ -45,7 +45,7 @@ class Book extends Component {
             books.items.map((i) => (
               <div key={i.id} className="book__item">
                 <NavLink
-                  to={window.location + '/books/' + i.id}
+                  to={'/books/' + i.id}
                   className="navigation__link"
                 ><h4>{i.title}</h4></NavLink>
                 <p>Eftir {i.author}, gefin út {i.published}</p>

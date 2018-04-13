@@ -5,7 +5,8 @@ import Books from '../../components/book';
 class Book extends Component {
 
   render() {    
-    const query = this.props.location.search || '';   
+    const query = this.props.location.search || '';  
+    console.log(query) 
   
     return (
       <Books search={query}/>

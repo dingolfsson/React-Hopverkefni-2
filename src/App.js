@@ -22,7 +22,6 @@ class App extends Component {
 
   render() {
     const authenticated = this.props.auth.isAuthenticated; /* vita hvort notandi sé innskráður */
-    console.info();
 
     return (
       <main className="main">

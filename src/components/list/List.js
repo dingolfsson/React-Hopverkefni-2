@@ -14,7 +14,6 @@ export default class List extends Component {
 
   componentWillMount() {
     const { page } = this.props;
-    console.log(page);
     
   }
   // static getDerivedStateFromProps(nextProps, prevState) {
@@ -32,7 +31,6 @@ export default class List extends Component {
 
   render() {
     const { title, data, page } = this.props;
-    console.log(data);
     
     return(
       <section className="list">
