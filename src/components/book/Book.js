@@ -14,21 +14,33 @@ class Book extends Component {
   componentDidMount() {   
     const { dispatch, search } = this.props;
     dispatch(fetchBooks(search));
+
+    if (search) {
+      this.setState({ search, isQuery: true })
+    } else this.setState({ search, isQuery: false })
   }
   
   render() {
     const { isFetching, books } = this.props;
-    
+    const page = Math.floor(books.offset / 10) + 1 | 0;
+    const { isQuery, search } = this.state;
+    let title = 'Bækur';
+
+    if(isQuery) {
+      title = `Bókaleit: ${querystring.parse(search).search}`
+    }
+
     if (isFetching) {
       return (
         <p>Sæki Gögn..</p>
       );
     }
-
+    
     return (
+      
       <div>
         <List 
-          title="Bækur" 
+          title={title}
           data={books.items && (
             books.items.map((i) => (
               <div key={i.id} className="book__item">
@@ -39,6 +51,7 @@ class Book extends Component {
                 <p>Eftir {i.author}, gefin út {i.published}</p>
               </div>)))
           }
+          page={page}
           />
     </div>
     )

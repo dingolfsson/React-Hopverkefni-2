@@ -7,7 +7,7 @@ class Book extends Component {
 
 
   render() {    
-    const query = this.props.location.search || '';       
+    const query = this.props.location.search;
   
     return (
       <BookRoute search={query}/>

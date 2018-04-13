@@ -30,7 +30,6 @@ class App extends Component {
             <Route path="/" exact component={Home} />
             <Route path="/login" exact component={Login} />
             <UserRoute path="/profile" authenticated={authenticated} component={Profile} />
-            {/* todo fleiri route */}
             <Route path="/books" exact component={Book} />
             <Route component={NotFound} />
           </Switch>
