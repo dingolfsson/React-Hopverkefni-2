@@ -27,9 +27,15 @@ class Form extends Component {
   handleSubmit = async (e) => {
     e.preventDefault();
 
-    const { dispatch } = this.props;
+    const { dispatch, slug } = this.props;
     const data = { ...this.state };
-    dispatch(addBook(data));
+
+    //temp solution
+    if (slug.pathname === '/books/new') {
+      dispatch(addBook(data));
+    }
+    const id = slug.pathname[7]
+    dispatch(updateBook(data, id))
   }
 
   componentDidMount() {
@@ -128,6 +134,7 @@ class Form extends Component {
 const mapStateToProps = (state) => {
   return {
     isAdding: state.books.isAdding,
+    isUpdating: state.books.isUpdating,
     errors: state.books.errors,
     isFetching: state.categories.isFetching,
     categories: state.categories.categories,

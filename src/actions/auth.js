@@ -130,4 +130,40 @@ export const logoutUser = () => {
   }
 }
 
+export const updatePhoto = (file) => {
+  return async (dispatch) => {
+    dispatch(requestRegister());
+    let update;
+    try{
+      update = await api.photo('/users/me/profile', file);
+    }catch(e){
+      console.info(e);
+      return dispatch(registerError());
+    }
+    if(update.result.error){
+      dispatch(registerError());
+    }else{
+      dispatch(registerUser());
+    }
+  }
+}
+export const updateUser = (data) => {
+  return async (dispatch) => {
+    dispatch(requestRegister());
+    let update;
+    try{
+      update = await api.patch('/users/me', data);
+    }catch(e){
+      console.info(e);
+      return dispatch(registerError());
+    }
+    console.info(update);
+    if(update){
+      dispatch(registerError());
+    }else{
+      dispatch(registerUser());
+    }
+  }
+}
+
 /* todo fleiri action */

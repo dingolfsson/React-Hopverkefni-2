@@ -1,37 +1,37 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchBooks } from '../../actions/books';
-
+import { NavLink } from 'react-router-dom'
 
 class Book extends Component {
-  state = {}
+  state = {
+    search: '',
+    isQuery: false,
+  }
 
   componentDidMount() {
-    const { dispatch } = this.props;
-    dispatch(fetchBooks());
+    
   }
 
   render() {
-    const { isFetching, books } = this.props;
-    
+    const { isFetching } = this.props;
+
     if (isFetching) {
       return (
-        <p>Sæki minnisatriði..</p>
+        <p>Sæki gögn..</p>
       );
     }
 
     return (
-      <section>
-        <h2>Bækur</h2>
-        <ul>
-          <p>Im here</p>
-        </ul>
-      </section>
-    );
+      <div>
+  
+      </div>
+    )
   }
 }
 
 const mapStateToProps = (state) => {
+
   return {
     isFetching: state.books.isFetching,
     books: state.books.books,
