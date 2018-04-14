@@ -15,6 +15,7 @@ import NotFound from './routes/not-found';
 import Book from './routes/book';
 import Form from './routes/form';
 import Image from './routes/image';
+import PachUser from './routes/patchUser';
 
 import './App.css';
 
@@ -36,6 +37,7 @@ class App extends Component {
             <Route path="/register" exact component={Register} />
             <Route path="/profile" authenticated={authenticated} exact component={Profile} />
             <Route path="/profile/image" authenticated={authenticated} exact component={Image} />
+            <Route path="/profile/update" authenticated={authenticated} exact component={PachUser} />
             <Route path="/users" authenticated={authenticated} component={User} />
             <Route path="/books" exact component={Book} />
             <Route path="/books" authenticated={authenticated} component={Form} />

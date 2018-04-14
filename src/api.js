@@ -150,6 +150,7 @@ async function patch(endpoint, data) {
   return { result, status: response.status };
 }
 
+
 export default {
   get,
   post,
