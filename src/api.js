@@ -149,6 +149,9 @@ async function patch(endpoint, data) {
 
   return { result, status: response.status };
 }
+async function patchUser(endpoint, data){
+  
+}
 
 export default {
   get,
@@ -157,4 +160,5 @@ export default {
   login,
   register,
   photo,
+  patchUser,
 };

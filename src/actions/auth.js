@@ -147,5 +147,22 @@ export const updatePhoto = (file) => {
     }
   }
 }
+export const updateUser = (data) => {
+  return async (dispatch) => {
+    dispatch(requestRegister());
+    let update;
+    try{
+      update = await api.patchUser('/users/me', data);
+    }catch(e){
+      console.info(e);
+      return dispatch(registerError());
+    }
+    if(update.result.error){
+      dispatch(registerError());
+    }else{
+      dispatch(registerUser());
+    }
+  }
+}
 
 /* todo fleiri action */
