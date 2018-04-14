@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { PatchUser } from '../../actions/auth';
+import { updateUser } from '../../actions/auth';
 
 
 class PachUser extends Component {
@@ -23,7 +23,7 @@ class PachUser extends Component {
 
     const { dispatch } = this.props;
     const data = { ...this.state };
-    dispatch(PatchUser(data));
+    dispatch(updateUser(data));
   }
 
   render() {
