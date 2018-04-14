@@ -152,12 +152,13 @@ export const updateUser = (data) => {
     dispatch(requestRegister());
     let update;
     try{
-      update = await api.patchUser('/users/me', data);
+      update = await api.patch('/users/me', data);
     }catch(e){
       console.info(e);
       return dispatch(registerError());
     }
-    if(update.result.error){
+    console.info(update);
+    if(update){
       dispatch(registerError());
     }else{
       dispatch(registerUser());
