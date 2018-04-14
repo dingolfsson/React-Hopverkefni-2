@@ -1,7 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { NavLink } from 'react-router-dom'
 import { fetchProfiles } from '../../actions/profiles';
+import { fetchReadProfilesBooks } from '../../actions/profiles';
+import { fetchUserBooks } from '../../actions/books';
 
+import List from './List';
 
 class Profile extends Component {
   state = {}
@@ -9,11 +13,12 @@ class Profile extends Component {
   componentDidMount() {
     const { dispatch } = this.props;
     dispatch(fetchProfiles());
+    dispatch(fetchUserBooks());
   }
 
   render() {
     const { isFetching, profiles } = this.props;
-    console.info(this.props)
+    console.info(profiles)
     if (isFetching) {
       return (
         <p>Sæki minnisatriði..</p>
@@ -21,20 +26,29 @@ class Profile extends Component {
     }
 
     return (
-      <section>
-        <h2>Upplýsingar</h2>
-        <p>uppfæra mynd</p>
-        <p>uppfæra nafn</p>
-        <p>uppfæra lykilorð</p>
-        <h2>Lesnar bækur</h2>
-      </section>
+      <div>
+        <List 
+          title="Notendur" 
+          data={profiles.items && (
+            profiles.items.map((i) => (
+              <div key={i.title} className="bookRead__item">
+                <NavLink
+                  to={window.location + '/' + i.book_id}
+                  className="navigation__link"
+                ><h4>{i.title}</h4></NavLink>
+                <p>Einkunn: {i.rating}</p>
+              </div>)))
+          }
+          />
+    </div>
     );
   }
 }
 
 const mapStateToProps = (state) => {
+  console.info(state)
   return {
-    isFetching: state.books.isFetching,
+    isFetching: state.users.isFetching,
     profiles: state.books.books,
     error: state.books.error,
   }

@@ -107,15 +107,15 @@ export const fetchUserBooks = () => {
   return async (dispatch) => {
     dispatch(requestBooks());
 
-    let books;
+    let readBooks;
     try {
-      books = await api.get('/users/me/read');
-      console.info(books);
+      readBooks = await api.get('/users/me/read');
+      console.info(readBooks);
     } catch (e) {
       return dispatch(booksError(e))
     }
 
-    dispatch(receiveBooks(books.result));
+    dispatch(receiveBooks(readBooks.result));
   }
 }
 
