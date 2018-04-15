@@ -160,12 +160,15 @@ export const updateBook = (path, data) => {
       book = await api.patch(path , { ...data });
     } catch (e) {
       return dispatch(updateBooksError([{ message: e }]))
+      
     }
 
     if (book.status >= 400) {
       return dispatch(updateBooksError(book.result))
+      
     }
 
     dispatch(receiveUpdateBook(book.result))
+    
   }
 }

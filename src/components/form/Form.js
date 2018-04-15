@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { addBook, updateBook } from '../../actions/books';
 import { fetchCategories } from '../../actions/categories';
+import { Redirect } from 'react-router';
 
 class Form extends Component {
   state = {
@@ -32,11 +33,12 @@ class Form extends Component {
     const path = slug.pathname;
     const newPath = path.replace('edit', '');
 
-    //temp solution
     if (slug.pathname === '/books/new') {
       dispatch(addBook(data));
     }
     dispatch(updateBook(newPath, data))
+    
+
   }
 
   async componentDidMount() {
@@ -61,6 +63,7 @@ class Form extends Component {
       )
     }
 
+    console.log(this.props)
     return (
       <div>              
         {errors.errors && (

@@ -1,8 +1,9 @@
-import { BOOKS_REQUEST, BOOKS_ERROR, BOOKS_SUCCESS, BOOKS_ADD_REQUEST, BOOKS_ADD_ERROR, BOOKS_ADD_SUCCESS } from '../actions/books';
+import { BOOKS_REQUEST, BOOKS_ERROR, BOOKS_SUCCESS, BOOKS_ADD_REQUEST, BOOKS_ADD_ERROR, BOOKS_ADD_SUCCESS, BOOKS_UPDATE_REQUEST, BOOKS_UPDATE_ERROR, BOOKS_UPDATE_SUCCESS} from '../actions/books';
 
 const initialState = {
   isFetching: false,
   isAdding: false,
+  isUpdating: false,
   books: [],
   error: null,
   errors: [],
@@ -47,7 +48,26 @@ export default (state = initialState, action) => {
     case BOOKS_ADD_SUCCESS:
       return {
         ...state,
-        isAdding: action.isAdding,
+        isUpdating: action.isUpdating,
+        books: [...state.books, action.book],
+        error: action.error,
+      };
+    case BOOKS_UPDATE_REQUEST:
+      return {
+        ...state,
+        isUpdating: action.isUpdating,
+        errors: [],
+      };
+    case BOOKS_UPDATE_ERROR:
+      return {
+        ...state,
+        isUpdating: action.isUpdating,
+        errors: action.errors,
+      };
+    case BOOKS_UPDATE_SUCCESS:
+      return {
+        ...state,
+        isUpdating: action.isUpdating,
         books: [...state.books, action.book],
         error: action.error,
       };
