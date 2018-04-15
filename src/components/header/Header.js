@@ -28,6 +28,7 @@ class Header extends Component {
           <Search />
           <Link to="/profile">{ name }</Link>
           <Button onClick={this.handleLogout}>Logout</Button>
+          <img src='/profile.jpg' alt="user pic"/>
         </header>
       );
     }

@@ -78,26 +78,19 @@ async function photo(endpoint, data) {
 
   const token = window.localStorage.getItem('token');
   const url = `${baseurl}${endpoint}`;
-  console.info(url)
 
   var form = new FormData();
-  form.append("profile", "../public/profile.jpg");
-  console.info
+  form.append("profile", data);
     
   const options = {
-    "async": true,
-    "crossDomain": true,
-    "url": url,
-    "method": "POST",
-    headers: {
-      "Content-Type": "application/json",
-      "Authorization": `Bearer ${token}`,
-    },
-    "processData": false,
-    "contentType": false,
-    "mimeType": "multipart/form-data",
-    "data": form
+    method: "POST",
+    headers: {},
+    body: form
     };
+
+    if (token) {
+      options.headers['Authorization'] = `Bearer ${token}`;
+    }  
 
     const response = await fetch(url, options);
 
