@@ -5,12 +5,13 @@ import Profile from '../../components/profile';
 import PachUser from '../../components/pachUser';
 import Image from '../../components/image';
 
+import './Profile.css';
 
 class Profiles extends Component {
 
   render() {
     return (
-      <div>
+      <div class='profile'>
         <Image />
         <PachUser />
         <Profile />

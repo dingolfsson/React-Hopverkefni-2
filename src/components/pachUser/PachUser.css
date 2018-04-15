@@ -1,0 +1,9 @@
+.pachSection{
+    display: flex;
+    flex-flow: wrap;
+    flex-direction: row;
+    padding: 10px;
+}
+.pachH{
+    width: 100%;
+}

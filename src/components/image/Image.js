@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { updatePhoto } from '../../actions/auth';
+import Button from '../button';
 
+import './Image.css';
 
 class Image extends Component {
   state = {
@@ -34,13 +36,13 @@ class Image extends Component {
     }
 
     return (
-      <section>
-        <h2>uppfæra mynd</h2>
-        <form onSubmit={this.handleSubmit}>
+      <section class='imageSection'>
+        <h2 class='imageH'>uppfæra mynd</h2>
+        <form class='imageform' onSubmit={this.handleSubmit}>
           <div>
             <input type="file" name="file" accept="image/*" onChange={this.handleInputChange}/>
           </div>
-           <button>Skrá</button>
+           <Button>Skrá</Button>
         </form>    
       </section>
     );

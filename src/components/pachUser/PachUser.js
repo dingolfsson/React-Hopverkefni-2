@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { updateUser } from '../../actions/auth';
+import Button from '../button';
+
+import './PachUser.css';
 
 
 class PachUser extends Component {
@@ -34,7 +37,7 @@ class PachUser extends Component {
       );
     }
     return (
-      <section>
+      <section class='pachSection'>
         {errors && (
           <ul>{errors.errors.map((error, i) => (
             <li key={i}>
@@ -42,7 +45,7 @@ class PachUser extends Component {
             </li>
           ))}</ul>
         )}
-        <h2>uppfæra nafn og lykilorð</h2>
+        <h2 class='pachH' >uppfæra nafn og lykilorð</h2>
         <form onSubmit={this.handleSubmit}>
           <div>
             <input type="text" name="name" onChange={this.handleInputChange}/>
@@ -50,7 +53,7 @@ class PachUser extends Component {
           <div>
             <input type="text" name="password" onChange={this.handleInputChange}/>
           </div>
-           <button>Skrá</button>
+           <Button>Skrá</Button>
         </form>    
       </section>
     );
