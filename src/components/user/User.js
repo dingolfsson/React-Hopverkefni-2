@@ -30,9 +30,9 @@ class User extends Component {
           title="Notendur" 
           data={users.items && (
             users.items.map((i) => (
-              <div key={i.name} className="user__item">
+              <div key={i.id} className="user__item">
                 <NavLink
-                  to={window.location + '/' + i.id}
+                  to={'/users/' + i.id + "/read/"}
                   className="navigation__link"
                 ><h4>{i.name}</h4></NavLink>
               </div>)))
