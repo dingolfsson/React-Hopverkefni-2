@@ -93,7 +93,7 @@ function receiveUpdate(user) {
   return {
     type: UPDATE_SUCCESS,
     isFetching: false,
-    isAuthenticated: false,
+    isAuthenticated: true,
     user,
     message: null,
   }
@@ -162,7 +162,7 @@ export const logoutUser = () => {
 
 export const updatePhoto = (file) => {
   return async (dispatch) => {
-    dispatch(requestRegister());
+    dispatch(requestUpdate());
     let update;
     console.info(file);
     try{
@@ -174,14 +174,13 @@ export const updatePhoto = (file) => {
     if(update.result.error){
       dispatch(registerUpdate(update.result.error));
     }else{
-      dispatch(registerUpdate());
+      dispatch(receiveUpdate(JSON.stringify(update.result)));
     }
   }
 }
 export const updateUser = (data) => {
   return async (dispatch) => {
     dispatch(requestUpdate());
-    console.info(data)
     let update;
     try{
       update = await api.patch('/users/me', data);
@@ -191,7 +190,9 @@ export const updateUser = (data) => {
     if(update.result.errors){
       dispatch(registerUpdate(update.result.errors));
     }else{
-      dispatch(registerUpdate());
+      localStorage.removeItem('user');
+      localStorage.setItem('user', JSON.stringify(update.result));
+      dispatch(receiveUpdate(update.result));
     }
   }
 }

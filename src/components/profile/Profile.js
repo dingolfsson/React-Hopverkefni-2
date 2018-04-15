@@ -18,7 +18,6 @@ class Profile extends Component {
 
   render() {
     const { isFetching, profiles } = this.props;
-    console.info(profiles)
     if (isFetching) {
       return (
         <p>Sæki þínar upplýsingar..</p>
@@ -46,7 +45,6 @@ class Profile extends Component {
 }
 
 const mapStateToProps = (state) => {
-  console.info(state)
   return {
     isFetching: state.users.isFetching,
     profiles: state.books.books,

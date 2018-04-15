@@ -3,12 +3,15 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import Profile from '../../components/profile';
 import PachUser from '../../components/pachUser';
+import Image from '../../components/image';
+
 
 class Profiles extends Component {
 
   render() {
     return (
       <div>
+        <Image />
         <PachUser />
         <Profile />
       </div>

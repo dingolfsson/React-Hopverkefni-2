@@ -48,11 +48,10 @@ class Header extends Component {
 }
 
 const mapStateToProps = (state) => {
-  console.info(state)
   return {
     auth: state.auth,
     name: state.auth.user ? state.auth.user.name : '',
-    image: state.auth.user.image ? state.auth.user.image: './profile.jpg',
+    image: state.auth.user ? state.auth.user.image ? state.auth.user.image : './profile.jpg' : './profile.jpg' ,
   }
 }
 
