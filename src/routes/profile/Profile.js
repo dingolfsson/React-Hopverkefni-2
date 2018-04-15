@@ -9,8 +9,8 @@ class Profiles extends Component {
   render() {
     return (
       <div>
-        <Profile />
         <PachUser />
+        <Profile />
       </div>
     );
   }

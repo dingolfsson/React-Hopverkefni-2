@@ -21,14 +21,14 @@ class Profile extends Component {
     console.info(profiles)
     if (isFetching) {
       return (
-        <p>Sæki minnisatriði..</p>
+        <p>Sæki þínar upplýsingar..</p>
       );
     }
 
     return (
       <div>
         <List 
-          title="Notendur" 
+          title="Lesnar bækur" 
           data={profiles.items && (
             profiles.items.map((i) => (
               <div key={i.title} className="bookRead__item">
