@@ -68,7 +68,7 @@ class Book extends Component {
           <p>Tungumál: {book.language}</p>
         )}
 
-        <NavLink to={path} className="navigation__link"
+        <NavLink to={newPath} className="navigation__link"
         ><p>Breyta bók</p>  </NavLink>
 
         {/* button here ... */}

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { addBook, updateBook } from '../../actions/books';
+import { addBook, updateBook, resetBook } from '../../actions/books';
 import { fetchCategories } from '../../actions/categories';
 import { Redirect } from 'react-router';
 
@@ -41,8 +41,21 @@ class Form extends Component {
   }
 
   async componentDidMount() {
+    this.baseState = this.state;
     const { dispatch } = this.props;
     dispatch(fetchCategories());
+  }
+  componentWillUnmount(){
+    console.info('unmount');
+    const { dispatch } = this.props;
+
+    dispatch(resetBook());
+  }
+  componentWillReceiveProps(nextProps){
+    console.info('lame');
+    if (nextProps.success !== this.props.success) {
+      console.info('herer');
+    }
   }
 
 
