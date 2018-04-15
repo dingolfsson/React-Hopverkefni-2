@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import Profile from '../../components/profile';
+import PachUser from '../../components/pachUser';
 
 class Profiles extends Component {
 
@@ -9,6 +10,7 @@ class Profiles extends Component {
     return (
       <div>
         <Profile />
+        <PachUser />
       </div>
     );
   }

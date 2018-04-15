@@ -27,15 +27,22 @@ class PachUser extends Component {
   }
 
   render() {
-    const { isFetching, profiles } = this.props;
+    const { isFetching, profiles, errors } = this.props;
     if (isFetching) {
       return (
         <p>Sæki minnisatriði..</p>
       );
     }
-
+    console.info('===', errors)
     return (
       <section>
+        {errors && (
+          <ul>{errors.errors.map((error, i) => (
+            <li key={i}>
+              {error.message}
+            </li>
+          ))}</ul>
+        )}
         <h2>uppfæra nafn og lykilorð</h2>
         <form onSubmit={this.handleSubmit}>
           <div>

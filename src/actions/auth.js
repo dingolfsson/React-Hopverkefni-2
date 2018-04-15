@@ -11,6 +11,9 @@ export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 export const REGISTER_SUCCESS = 'REGISTER_SUCCESS';
 export const REGISTER_FAILURE = 'REGISTER_FAILURE';
 export const REGISTER_REQUEST = 'REGISTER_REQUEST';
+export const UPDATE_SUCCESS = 'UPDATE_SUCCESS';
+export const UPDATE_FAILURE = 'UPDATE_FAILURE';
+export const UPDATE_REQUEST = 'UPDATE_REQUEST';
 export const LOGIN_FAILURE = 'LOGIN_FAILURE';
 export const LOGIN_LOGOUT = 'LOGIN_LOGOUT';
 
@@ -62,6 +65,33 @@ function registerError(message) {
 function receiveRegister(user) {
   return {
     type: REGISTER_SUCCESS,
+    isFetching: false,
+    isAuthenticated: false,
+    user,
+    message: null,
+  }
+}
+function requestUpdate() {
+  return {
+    type: UPDATE_REQUEST,
+    isFetching: true,
+    isAuthenticated: false,
+    message: null,
+  }
+}
+
+function registerUpdate(message) {
+  return {
+    type: UPDATE_FAILURE,
+    isFetching: false,
+    isAuthenticated: false,
+    message
+  }
+}
+
+function receiveUpdate(user) {
+  return {
+    type: UPDATE_SUCCESS,
     isFetching: false,
     isAuthenticated: false,
     user,
@@ -138,32 +168,30 @@ export const updatePhoto = (file) => {
       update = await api.photo('/users/me/profile', file);
     }catch(e){
       console.info(e);
-      return dispatch(registerError());
+      return dispatch(registerUpdate());
     }
     if(update.result.error){
-      dispatch(registerError());
+      dispatch(registerUpdate());
     }else{
-      dispatch(registerUser());
+      dispatch(registerUpdate());
     }
   }
 }
 export const updateUser = (data) => {
   return async (dispatch) => {
-    dispatch(requestRegister());
+    dispatch(requestUpdate());
     let update;
     try{
       update = await api.patch('/users/me', data);
     }catch(e){
       console.info(e);
-      return dispatch(registerError());
+      return dispatch(registerUpdate());
     }
-    console.info(update);
-    if(update){
-      dispatch(registerError());
+    if(update.result.errors){
+      dispatch(registerError(update.result.errors));
     }else{
-      dispatch(registerUser());
+      dispatch(registerUpdate());
     }
   }
 }
 
-/* todo fleiri action */
