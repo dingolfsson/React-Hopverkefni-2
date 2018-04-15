@@ -33,7 +33,6 @@ class PachUser extends Component {
         <p>Sæki minnisatriði..</p>
       );
     }
-    console.info('===', errors)
     return (
       <section>
         {errors && (
