@@ -41,8 +41,9 @@ class App extends Component {
             <Route path="/profile/update" authenticated={authenticated} exact component={PachUser} />
             <Route path="/users" authenticated={authenticated} component={User} />
             <Route path="/books" exact component={Books} />
+            <Route path="/books/new" authenticated={authenticated} exact component={Form} />
             <Route path="/books/:id" exact component={Book} />
-            {/* <Route path="/books" authenticated={authenticated} component={Form} /> */}
+            <Route path="/books/:id/edit" authenticated={authenticated} exact component={Form} />
             <Route component={NotFound} />
           </Switch>
         </div>

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { NavLink, Route } from 'react-router-dom';
 import { fetchBook } from '../../actions/books';
 
 class Book extends Component {
@@ -25,7 +26,7 @@ class Book extends Component {
   }
 
   render() {
-    const { isFetching, books } = this.props;
+    const { isFetching, books, slug } = this.props;
 
     if (isFetching) {
       return (
@@ -34,21 +35,39 @@ class Book extends Component {
     }
 
     const book = books.books;
-
+    const path = slug.pathname;
     return (
       <div>
         <h3>{book.title}</h3>
         <p>Eftir {book.author}</p>
+        
         {book.isbn10 && (
           <p>ISBN10: {book.isbn10}</p>
         )}
+
         {book.isbn13 && (
           <p>ISBN13: {book.isbn13}</p>
         )}
+
+        <p>{book.categorytitle}</p>
         <p>{book.description}</p>
-        <p>{book.pagecount} síður</p>
-        <p>Gefin út: {book.published}</p>
-        <p>Tungumál: {book.language}</p>
+
+        {book.pagecount && (
+          <p>{book.pagecount} síður</p>
+        )}
+
+        {book.published && (
+          <p>Gefin út: {book.published}</p>
+        )}
+
+        {book.language && (
+          <p>Tungumál: {book.language}</p>
+        )}
+        <NavLink to={path + '/edit'} className="navigation__link"
+        ><p>Breyta bók</p>  </NavLink>
+
+        {/* button here ... */}
+        
       </div>
     )
   }

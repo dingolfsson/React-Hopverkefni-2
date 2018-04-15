@@ -151,13 +151,13 @@ export const addBook = (data) => {
   }
 }
 
-export const updateBook = (data, id) => {
+export const updateBook = (path, data) => {
   data.category = Number(data.category);
   return async (dispatch) => {
     dispatch(updatingBook());
     let book;
     try {
-      book = await api.patch('/books/'+ id , { ...data });
+      book = await api.patch(path , { ...data });
     } catch (e) {
       return dispatch(updateBooksError([{ message: e }]))
     }
