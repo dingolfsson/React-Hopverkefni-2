@@ -10,6 +10,7 @@ class PachUser extends Component {
   state = {
     name: null,
     password: null,
+    verify: null,
   }
 
 
@@ -26,11 +27,15 @@ class PachUser extends Component {
 
     const { dispatch } = this.props;
     const data = { ...this.state };
-    dispatch(updateUser(data));
+    const { password, verify} = this.state;
+    if(password === verify){
+      dispatch(updateUser(data));
+    }
   }
 
   render() {
     const { isFetching, profiles, errors } = this.props;
+    const { password, verify} = this.state;
     if (isFetching) {
       return (
         <p>Sæki minnisatriði..</p>
@@ -46,14 +51,20 @@ class PachUser extends Component {
           ))}</ul>
         )}
         <h2 class='pachH' >uppfæra nafn og lykilorð</h2>
-        <form onSubmit={this.handleSubmit}>
-          <div>
+        {password === verify ? <p></p> : <p>passwords much mach</p>}
+
+        <form onSubmit={this.handleSubmit} class="pachForm">
+          <div class="pachdiv">
             <input type="text" name="name" onChange={this.handleInputChange}/>
-          </div>
-          <div>
-            <input type="text" name="password" onChange={this.handleInputChange}/>
-          </div>
-           <Button>Skrá</Button>
+            </div>
+            <div class="pachdiv">
+            <input type="password" name="password" onChange={this.handleInputChange}/>
+            </div>
+            <div class="pachdiv">
+            <input type="password" name="verify" onChange={this.handleInputChange}/>
+            </div>
+
+           <Button disabled={password === verify}>Skrá</Button>
         </form>    
       </section>
     );

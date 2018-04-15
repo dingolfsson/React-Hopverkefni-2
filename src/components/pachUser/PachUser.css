@@ -7,3 +7,16 @@
 .pachH{
     width: 100%;
 }
+.pachForm{
+    height: 200px;
+    display: flex;
+    flex-direction: row;
+    flex-flow: wrap;
+}
+input{
+    margin: auto;
+}
+.pachdiv{
+    width: 100%;
+    display: flex;
+}
