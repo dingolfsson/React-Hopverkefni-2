@@ -18,19 +18,6 @@ class Form extends Component {
     categorytitle: '',
   }
 
-  // static propTypes = {
-  //   title: PropTypes.string,
-  //   author: PropTypes.string,
-  //   description: PropTypes.string,
-  //   isbn10: PropTypes.string,
-  //   isbn13: PropTypes.string,
-  //   category: PropTypes.number,
-  //   published: PropTypes.string,
-  //   pagecount: PropTypes.string,
-  //   language: PropTypes.string,
-  //   categorytitle: PropTypes.string,
-  // }
-
   handleInputChange = (e) => {
     const { name, value } = e.target;
     if (name) {
