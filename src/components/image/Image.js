@@ -13,7 +13,7 @@ class Image extends Component {
     const { name, value } = e.target;
     // e.target.files[0]
     if (name) {
-      this.setState({ [name]: value });
+      this.setState({ [name]: e.target.files[0] });
     }
   }
 

@@ -164,8 +164,9 @@ export const updatePhoto = (file) => {
   return async (dispatch) => {
     dispatch(requestRegister());
     let update;
+    console.info(file);
     try{
-      update = await api.photo('/users/me/profile', file);
+      update = await api.photo('/users/me/profile', file.file);
     }catch(e){
       console.info(e);
       return dispatch(registerUpdate(e));
