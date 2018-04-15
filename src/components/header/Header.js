@@ -15,10 +15,13 @@ class Header extends Component {
     const { dispatch } = this.props;
     dispatch(logoutUser());
   }
+  componentDidMount(){
+    
+  }
 
 
   render() {
-    const { name } = this.props;
+    const { name, image } = this.props;
     if (this.props.auth.isAuthenticated) {
       return (
         <header className="header">
@@ -28,7 +31,7 @@ class Header extends Component {
           <Search />
           <Link to="/profile">{ name }</Link>
           <Button onClick={this.handleLogout}>Logout</Button>
-          <img src='/profile.jpg' alt="user pic"/>
+          <img src={image} alt="user pic"/>
         </header>
       );
     }
@@ -45,9 +48,11 @@ class Header extends Component {
 }
 
 const mapStateToProps = (state) => {
+  console.info(state)
   return {
     auth: state.auth,
     name: state.auth.user ? state.auth.user.name : '',
+    image: state.auth.user.image ? state.auth.user.image: './profile.jpg',
   }
 }
 
