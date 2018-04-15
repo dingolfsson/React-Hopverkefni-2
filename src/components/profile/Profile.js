@@ -32,7 +32,7 @@ class Profile extends Component {
             profiles.items.map((i) => (
               <div key={i.title} className="bookRead__item">
                 <NavLink
-                  to={window.location + '/' + i.book_id}
+                  to={'/books/' + i.book_id}
                   className="navigation__link"
                 ><h4>{i.title}</h4></NavLink>
                 <p>Einkunn: {i.rating}</p>
