@@ -168,10 +168,10 @@ export const updatePhoto = (file) => {
       update = await api.photo('/users/me/profile', file);
     }catch(e){
       console.info(e);
-      return dispatch(registerUpdate());
+      return dispatch(registerUpdate(e));
     }
     if(update.result.error){
-      dispatch(registerUpdate());
+      dispatch(registerUpdate(update.result.error));
     }else{
       dispatch(registerUpdate());
     }
@@ -180,15 +180,15 @@ export const updatePhoto = (file) => {
 export const updateUser = (data) => {
   return async (dispatch) => {
     dispatch(requestUpdate());
+    console.info(data)
     let update;
     try{
       update = await api.patch('/users/me', data);
     }catch(e){
-      console.info(e);
-      return dispatch(registerUpdate());
+      return dispatch(registerUpdate(e));
     }
     if(update.result.errors){
-      dispatch(registerError(update.result.errors));
+      dispatch(registerUpdate(update.result.errors));
     }else{
       dispatch(registerUpdate());
     }

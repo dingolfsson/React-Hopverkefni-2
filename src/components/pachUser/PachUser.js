@@ -5,8 +5,8 @@ import { updateUser } from '../../actions/auth';
 
 class PachUser extends Component {
   state = {
-    name: '',
-    password: '',
+    name: null,
+    password: null,
   }
 
 
