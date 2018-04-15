@@ -29,16 +29,17 @@ class Form extends Component {
 
     const { dispatch, slug } = this.props;
     const data = { ...this.state };
+    const path = slug.pathname;
+    const newPath = path.replace('edit', '');
 
     //temp solution
     if (slug.pathname === '/books/new') {
       dispatch(addBook(data));
     }
-    const id = slug.pathname[7]
-    dispatch(updateBook(data, id))
+    dispatch(updateBook(newPath, data))
   }
 
-  componentDidMount() {
+  async componentDidMount() {
     const { dispatch } = this.props;
     dispatch(fetchCategories());
   }
