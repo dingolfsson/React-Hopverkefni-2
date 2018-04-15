@@ -18,6 +18,19 @@ class Form extends Component {
     categorytitle: '',
   }
 
+  // static propTypes = {
+  //   title: PropTypes.string,
+  //   author: PropTypes.string,
+  //   description: PropTypes.string,
+  //   isbn10: PropTypes.string,
+  //   isbn13: PropTypes.string,
+  //   category: PropTypes.number,
+  //   published: PropTypes.string,
+  //   pagecount: PropTypes.string,
+  //   language: PropTypes.string,
+  //   categorytitle: PropTypes.string,
+  // }
+
   handleInputChange = (e) => {
     const { name, value } = e.target;
     if (name) {
@@ -45,17 +58,10 @@ class Form extends Component {
     const { dispatch } = this.props;
     dispatch(fetchCategories());
   }
-  componentWillUnmount(){
-    console.info('unmount');
-    const { dispatch } = this.props;
 
+  async componentWillUnmount(){
+    const { dispatch } = this.props;
     dispatch(resetBook());
-  }
-  componentWillReceiveProps(nextProps){
-    console.info('lame');
-    if (nextProps.success !== this.props.success) {
-      console.info('herer');
-    }
   }
 
 
@@ -100,17 +106,17 @@ class Form extends Component {
 
           <div>
             <label htmlFor="title">Tittle:</label>
-            <input id="title" type="text" name="title" value={data.title} onChange={this.handleInputChange} />
+            <input id="title" type="text" name="title" value={books.title} onChange={this.handleInputChange} />
           </div>
 
           <div>
             <label htmlFor="author">Author:</label>
-            <input id="author" type="text" name="author" value={data.author} onChange={this.handleInputChange} />
+            <input id="author" type="text" name="author" value={books.author} onChange={this.handleInputChange} />
           </div>
 
           <div>
             <label htmlFor="description">Description:</label>
-            <textarea id="description" type="text" name="description" value={data.description} onChange={this.handleInputChange} />
+            <textarea id="description" type="text" name="description" value={books.description} onChange={this.handleInputChange} />
           </div>
 
           <div>
@@ -126,27 +132,27 @@ class Form extends Component {
 
           <div>
             <label htmlFor="isbn10">ISBN10:</label>
-            <input id="isbn10" type="text" name="isbn10" value={data.isbn10} onChange={this.handleInputChange} />
+            <input id="isbn10" type="text" name="isbn10" value={books.isbn10} onChange={this.handleInputChange} />
           </div>
 
           <div>
             <label htmlFor="isbn13">ISBN13:</label>
-            <input id="isbn13" type="text" name="isbn13" value={data.isbn13} onChange={this.handleInputChange} />
+            <input id="isbn13" type="text" name="isbn13" value={books.isbn13} onChange={this.handleInputChange} />
           </div>
 
           <div>
             <label htmlFor="pagecount ">Page:</label>
-            <input id="pagecount" type="text" name="pageCount" value={data.pagecount} onChange={this.handleInputChange} />
+            <input id="pagecount" type="text" name="pageCount" value={books.pagecount} onChange={this.handleInputChange} />
           </div>
 
           <div>
             <label htmlFor="language">Language:</label>
-            <input id="language" type="text" name="language" value={data.language} onChange={this.handleInputChange} />
+            <input id="language" type="text" name="language" value={books.language} onChange={this.handleInputChange} />
           </div>
 
           <div>
             <label htmlFor="published">Published:</label>
-            <input id="published" type="text" name="published" value={data.published} onChange={this.handleInputChange} />
+            <input id="published" type="text" name="published" value={books.published} onChange={this.handleInputChange} />
           </div>
 
           <button disabled={isAdding}>Skrá</button>

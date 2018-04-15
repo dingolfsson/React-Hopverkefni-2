@@ -6,20 +6,6 @@ import { fetchBook } from '../../actions/books';
 
 class Book extends Component {
 
-  //Not using this atm, but does any1 know how?
-  static propTypes = {
-    title: PropTypes.string,
-    author: PropTypes.string,
-    description: PropTypes.string,
-    isbn10: PropTypes.string,
-    isbn13: PropTypes.string,
-    category: PropTypes.number,
-    published: PropTypes.string,
-    pagecount: PropTypes.string,
-    language: PropTypes.string,
-    categorytitle: PropTypes.string,
-  }
-
   async componentDidMount() {
     const { dispatch, slug } = this.props;
     dispatch(fetchBook(slug.pathname));
@@ -35,10 +21,8 @@ class Book extends Component {
     }
 
     const book = books.books;
-    console.log("slug ", slug.pathname )
     const path = slug.pathname + '/edit';
     const newPath = path.replace('//', '/');
-    console.log(newPath)
 
     return (
       <div>
@@ -79,7 +63,6 @@ class Book extends Component {
 }
 
 const mapStateToProps = (state) => {
-  console.log(state)
   return {
     ...state,
   }
