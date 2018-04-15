@@ -170,4 +170,10 @@ export const updateBook = (path, data) => {
 
     dispatch(receiveUpdateBook(book.result))
   }
+  
+}
+export const resetBook = () => {
+  return async (dispatch) => {
+    dispatch(updatingBook());
+  }
 }
