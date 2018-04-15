@@ -6,16 +6,16 @@ import { Redirect } from 'react-router';
 
 class Form extends Component {
   state = {
-    title: '',
-    author: '',
-    description: '',
-    isbn10: '',
-    isbn13: '',
+    title: ' ',
+    author: ' ',
+    description: ' ',
+    isbn10: ' ',
+    isbn13: ' ',
     category: 1,
-    published: '',
-    pageCount: '',
-    language: '',
-    categorytitle: '',
+    published: ' ',
+    pageCount: ' ',
+    language: ' ',
+    categorytitle: ' ',
   }
 
   handleInputChange = (e) => {
