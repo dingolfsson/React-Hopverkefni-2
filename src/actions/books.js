@@ -56,6 +56,7 @@ function receiveAddBook(book) {
     type: BOOKS_ADD_SUCCESS,
     isAdding: false,
     book,
+    success: true,
     errors: null,
   }
 }
@@ -85,6 +86,7 @@ function receiveUpdateBook(book) {
     type: BOOKS_UPDATE_SUCCESS,
     isUpdating: false,
     book,
+    success: true,
     errors: null,
   }
 }
@@ -162,13 +164,10 @@ export const updateBook = (path, data) => {
       return dispatch(updateBooksError([{ message: e }]))
       
     }
-
     if (book.status >= 400) {
       return dispatch(updateBooksError(book.result))
-      
     }
 
     dispatch(receiveUpdateBook(book.result))
-    
   }
 }

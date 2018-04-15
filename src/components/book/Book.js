@@ -35,7 +35,11 @@ class Book extends Component {
     }
 
     const book = books.books;
-    const path = slug.pathname;
+    console.log("slug ", slug.pathname )
+    const path = slug.pathname + '/edit';
+    const newPath = path.replace('//', '/');
+    console.log(newPath)
+
     return (
       <div>
         <h3>{book.title}</h3>
@@ -63,7 +67,8 @@ class Book extends Component {
         {book.language && (
           <p>Tungumál: {book.language}</p>
         )}
-        <NavLink to={path + '/edit'} className="navigation__link"
+
+        <NavLink to={path} className="navigation__link"
         ><p>Breyta bók</p>  </NavLink>
 
         {/* button here ... */}
@@ -74,7 +79,7 @@ class Book extends Component {
 }
 
 const mapStateToProps = (state) => {
-
+  console.log(state)
   return {
     ...state,
   }

@@ -4,6 +4,7 @@ const initialState = {
   isFetching: false,
   isAdding: false,
   isUpdating: false,
+  success: false,
   books: [],
   error: null,
   errors: [],
@@ -50,6 +51,7 @@ export default (state = initialState, action) => {
         ...state,
         isUpdating: action.isUpdating,
         books: [...state.books, action.book],
+        success: action.success,
         error: action.error,
       };
     case BOOKS_UPDATE_REQUEST:
@@ -69,6 +71,7 @@ export default (state = initialState, action) => {
         ...state,
         isUpdating: action.isUpdating,
         books: [...state.books, action.book],
+        success: action.success,
         error: action.error,
       };
 

@@ -11,7 +11,7 @@ class Form extends Component {
     description: '',
     isbn10: '',
     isbn13: '',
-    category: '',
+    category: 1,
     published: '',
     pageCount: '',
     language: '',
@@ -28,17 +28,16 @@ class Form extends Component {
   handleSubmit = async (e) => {
     e.preventDefault();
 
-    const { dispatch, slug } = this.props;
+    const { dispatch, slug, success } = this.props;
     const data = { ...this.state };
     const path = slug.pathname;
     const newPath = path.replace('edit', '');
 
-    if (slug.pathname === '/books/new') {
+    if (path === '/books/new') {
       dispatch(addBook(data));
+    }else {
+      dispatch(updateBook(newPath, data))
     }
-    dispatch(updateBook(newPath, data))
-    
-
   }
 
   async componentDidMount() {
@@ -49,7 +48,7 @@ class Form extends Component {
 
   render() {
     const data = { ...this.state };
-    const { isAdding, errors, isFetching, categories } = this.props;
+    const { isAdding, errors, isFetching, categories, success, slug, books } = this.props;
 
     if(isAdding) {
       return (
@@ -63,7 +62,18 @@ class Form extends Component {
       )
     }
 
-    console.log(this.props)
+    const path = slug.pathname;
+    let newPath;
+    if (path === '/books/new' && success) {
+      newPath = '/books/' + books[0].id; 
+      return <Redirect to={newPath} />;
+    }
+
+    newPath = path.replace('edit', '');
+    if(success) {
+      return <Redirect to={newPath} />;
+    }
+
     return (
       <div>              
         {errors.errors && (
@@ -140,6 +150,8 @@ const mapStateToProps = (state) => {
     isAdding: state.books.isAdding,
     isUpdating: state.books.isUpdating,
     errors: state.books.errors,
+    success: state.books.success,
+    books: state.books.books,
     isFetching: state.categories.isFetching,
     categories: state.categories.categories,
     error: state.categories.error,
