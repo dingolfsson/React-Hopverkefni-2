@@ -1,5 +1,4 @@
 const baseurl = process.env.REACT_APP_SERVICE_URL;
-
 async function get(endpoint) {
 
   const token = window.localStorage.getItem('token');
@@ -76,32 +75,34 @@ async function post(endpoint, data) {
 }
 
 async function photo(endpoint, data) {
-  console.info('response result');
 
   const token = window.localStorage.getItem('token');
   const url = `${baseurl}${endpoint}`;
+  console.info(url)
 
   var form = new FormData();
-   form.append("file", "/home/alexander/Pictures/Untitled.png");
+  form.append("profile", "../public/profile.jpg");
+  console.info
     
   const options = {
+    "async": true,
+    "crossDomain": true,
+    "url": url,
+    "method": "POST",
     headers: {
-      "Content-Type": "application/x-www-form-urlencoded",
+      "Content-Type": "application/json",
+      "Authorization": `Bearer ${token}`,
     },
     "processData": false,
     "contentType": false,
     "mimeType": "multipart/form-data",
-    data: form,
-    'content-type': 'multipart/form-data',
-    method: 'POST',
+    "data": form
     };
 
-    if (token) {
-      options.headers['Authorization'] = `Bearer ${token}`;
-    }
     const response = await fetch(url, options);
 
     const result = await response.json();
+    console.info(result);
     return { result, status: response.status };
   
 }
