@@ -38,7 +38,7 @@ class Form extends Component {
     dispatch(updateBook(data, id))
   }
 
-  componentDidMount() {
+  async componentDidMount() {
     const { dispatch } = this.props;
     dispatch(fetchCategories());
   }

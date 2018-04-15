@@ -1,20 +1,31 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchBooks } from '../../actions/books';
-import { NavLink } from 'react-router-dom'
+import PropTypes from 'prop-types';
+import { fetchBook } from '../../actions/books';
 
 class Book extends Component {
-  state = {
-    search: '',
-    isQuery: false,
+
+  //Not using this atm, but does any1 know how?
+  static propTypes = {
+    title: PropTypes.string,
+    author: PropTypes.string,
+    description: PropTypes.string,
+    isbn10: PropTypes.string,
+    isbn13: PropTypes.string,
+    category: PropTypes.number,
+    published: PropTypes.string,
+    pagecount: PropTypes.string,
+    language: PropTypes.string,
+    categorytitle: PropTypes.string,
   }
 
-  componentDidMount() {
-    
+  async componentDidMount() {
+    const { dispatch, slug } = this.props;
+    dispatch(fetchBook(slug.pathname));
   }
 
   render() {
-    const { isFetching } = this.props;
+    const { isFetching, books } = this.props;
 
     if (isFetching) {
       return (
@@ -22,9 +33,22 @@ class Book extends Component {
       );
     }
 
+    const book = books.books;
+
     return (
       <div>
-  
+        <h3>{book.title}</h3>
+        <p>Eftir {book.author}</p>
+        {book.isbn10 && (
+          <p>ISBN10: {book.isbn10}</p>
+        )}
+        {book.isbn13 && (
+          <p>ISBN13: {book.isbn13}</p>
+        )}
+        <p>{book.description}</p>
+        <p>{book.pagecount} síður</p>
+        <p>Gefin út: {book.published}</p>
+        <p>Tungumál: {book.language}</p>
       </div>
     )
   }
@@ -33,9 +57,7 @@ class Book extends Component {
 const mapStateToProps = (state) => {
 
   return {
-    isFetching: state.books.isFetching,
-    books: state.books.books,
-    error: state.books.error,
+    ...state,
   }
 }
 

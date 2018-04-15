@@ -103,6 +103,19 @@ export const fetchBooks = (query) => {
   }
 }
 
+export const fetchBook = (path) => {
+  return async (dispatch) => {
+    dispatch(requestBooks());
+    let books;
+    try {
+      books = await api.get(path);
+    } catch (e) {
+      return dispatch(booksError(e))
+    }
+    dispatch(receiveBooks(books.result));
+  }
+}
+
 export const fetchUserBooks = () => {
   return async (dispatch) => {
     dispatch(requestBooks());

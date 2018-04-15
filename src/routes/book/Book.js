@@ -1,14 +1,11 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import Books from '../../components/book';
+import BookComponent from '../../components/book';
 
 class Book extends Component {
 
-  render() {    
-    const query = this.props.location.search || '';
-  
+  render() {
     return (
-      <Books search={query}/>
+      <BookComponent slug={this.props.location} />
     );
   }
 }
