@@ -118,10 +118,25 @@ export const fetchBook = (path) => {
   }
 }
 
-export const fetchUserBooks = () => {
+export const fetchUserIDBooks = (args) => {
   return async (dispatch) => {
     dispatch(requestBooks());
+    console.info("args", args);
+    let readBooks;
+    try {
+      readBooks = await api.get(args);
+    } catch (e) {
+      return dispatch(booksError(e))
+    }
+    console.info(readBooks.result);
+    dispatch(receiveBooks(readBooks.result));
+  }
+}
 
+export const fetchUserBooks = (args) => {
+  return async (dispatch) => {
+    dispatch(requestBooks());
+    console.info(args);
     let readBooks;
     try {
       readBooks = await api.get('/users/me/read');

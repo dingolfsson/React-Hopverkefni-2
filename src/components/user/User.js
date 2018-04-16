@@ -14,7 +14,7 @@ class User extends Component {
     console.info(this.props);
     dispatch(fetchUsers());
   }
-
+ 
   render() {
     const { isFetching, users } = this.props;
     

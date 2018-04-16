@@ -46,6 +46,20 @@ export const fetchUsers = () => {
   }
 }
 
+export const fetchUserName = (id) => {
+  return async (dispatch) => {
+    dispatch(requestUsers());
+    let name;
+    try {
+      name = await api.get(id);
+    } catch (e) {
+      return dispatch(usersError(e))
+    }
+    console.info(name.result);
+    dispatch(receiveUsers(name.result.name));
+  }
+}
+
 export const fetchUsersBookList = (url) => {
   return async (dispatch) => {
     dispatch(requestUsers());
