@@ -29,9 +29,9 @@ class Header extends Component {
   
           {/* ætti samt frekar heima í sér component */}
           <Search />
+          <img src={image} alt="user pic"/>
           <Link to="/profile">{ name }</Link>
           <Button onClick={this.handleLogout}>Logout</Button>
-          <img src={image} alt="user pic"/>
         </header>
       );
     }

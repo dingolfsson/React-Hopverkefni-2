@@ -176,7 +176,6 @@ export const updatePhoto = (file) => {
     }else{
       localStorage.removeItem('user');
       localStorage.setItem('user', JSON.stringify(update.result));
-
       dispatch(receiveUpdate(update.result));
     }
   }
