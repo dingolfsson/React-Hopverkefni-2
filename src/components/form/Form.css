@@ -9,13 +9,12 @@ body {
 
 .form-container {
   max-width: 500px;
-  border: 5px solid red;
   margin-left: 30vw;
 }
 
 input {
   float: right;
-  height: 4vh;
+  height: 1.5em;
   font-weight: 100;
 }
 

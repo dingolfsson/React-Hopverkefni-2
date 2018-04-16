@@ -4,6 +4,7 @@ import { addBook, updateBook, resetBook } from '../../actions/books';
 import { fetchCategories } from '../../actions/categories';
 import { Redirect } from 'react-router';
 import './Form.css';
+import Button from '../button';
 
 class Form extends Component {
   state = {
@@ -42,9 +43,12 @@ class Form extends Component {
   }
 
   async componentDidMount() {
-    this.baseState = this.state;
-    const { dispatch } = this.props;
+    const { dispatch, books, slug } = this.props;
     dispatch(fetchCategories());
+    const path = slug.pathname;
+    if (path !== '/books/new') {
+      this.setState({ ...books });
+    }
   }
 
   async componentWillUnmount(){
@@ -69,7 +73,7 @@ class Form extends Component {
     }
 
     const path = slug.pathname;
-    let newPath, title, data;
+    let newPath, title;
     if (path === '/books/new' && success) {
       newPath = '/books/' + books[0].id; 
       return <Redirect to={newPath} />;
@@ -82,11 +86,9 @@ class Form extends Component {
 
     if (path === '/books/new') {
       title = 'Skrá bók';
-      data = { ...this.state };
 
     }else {
       title = 'Breyta bók';
-      data = { ...books };
     }
 
     return (
@@ -104,17 +106,17 @@ class Form extends Component {
 
           <div>
             <label htmlFor="title">Tittle:</label>
-            <input id="title" type="text" name="title" value={data.title} onChange={this.handleInputChange} />
+            <input id="title" type="text" name="title" value={this.state.title} onChange={this.handleInputChange} />
           </div>
 
           <div>
             <label htmlFor="author">Author:</label>
-            <input id="author" type="text" name="author" value={data.author} onChange={this.handleInputChange} />
+            <input id="author" type="text" name="author" value={this.state.author} onChange={this.handleInputChange} />
           </div>
 
           <div>
             <label htmlFor="description">Description:</label>
-            <textarea id="description" type="text" name="description" value={data.description} onChange={this.handleInputChange} />
+            <textarea id="description" type="text" name="description" value={this.state.description} onChange={this.handleInputChange} />
           </div>
 
           <div>
@@ -130,30 +132,29 @@ class Form extends Component {
 
           <div>
             <label htmlFor="isbn10">ISBN10:</label>
-            <input id="isbn10" type="text" name="isbn10" value={data.isbn10} onChange={this.handleInputChange} />
+            <input id="isbn10" type="text" name="isbn10" value={this.state.isbn10} onChange={this.handleInputChange} />
           </div>
 
           <div>
             <label htmlFor="isbn13">ISBN13:</label>
-            <input id="isbn13" type="text" name="isbn13" value={data.isbn13} onChange={this.handleInputChange} />
+            <input id="isbn13" type="text" name="isbn13" value={this.state.isbn13} onChange={this.handleInputChange} />
           </div>
 
           <div>
             <label htmlFor="pagecount ">Page:</label>
-            <input id="pagecount" type="text" name="pageCount" value={data.pagecount} onChange={this.handleInputChange} />
+            <input id="pagecount" type="text" name="pageCount" value={this.state.pagecount} onChange={this.handleInputChange} />
           </div>
 
           <div>
             <label htmlFor="language">Language:</label>
-            <input id="language" type="text" name="language" value={data.language} onChange={this.handleInputChange} />
+            <input id="language" type="text" name="language" value={this.state.language} onChange={this.handleInputChange} />
           </div>
 
           <div>
             <label htmlFor="published">Published:</label>
-            <input id="published" type="text" name="published" value={data.published} onChange={this.handleInputChange} />
+            <input id="published" type="text" name="published" value={this.state.published} onChange={this.handleInputChange} />
           </div>
-
-          <button disabled={isAdding}>Vista</button>
+          <Button disabled={isAdding} className='vista' children='Vista'/>
         </form>
       </div>
     )
