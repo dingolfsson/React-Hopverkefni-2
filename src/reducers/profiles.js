@@ -1,4 +1,13 @@
-import { PROFILES_REQUESTS, PROFILES_ERROR, PROFILES_SUCCESS, PROFILES_ADD_REQUEST, PROFILES_ADD_ERROR, PROFILES_ADD_SUCCESS } from '../actions/profiles';
+import { PROFILES_REQUESTS, 
+  PROFILES_ERROR, 
+  PROFILES_SUCCESS, 
+  PROFILES_ADD_REQUEST, 
+  PROFILES_ADD_ERROR, 
+  PROFILES_ADD_SUCCESS,
+  DELETE_REVIEW_REQUEST,
+  DELETE_REVIEW_ERROR,
+  DELETE_REVIEW_SUCCES,
+ } from '../actions/profiles';
 
 const initialState = {
   isFetching: false,
@@ -7,6 +16,7 @@ const initialState = {
   error: null,
   errors: [],
 };
+
 
 export default (state = initialState, action) => {
   switch (action.type) {
@@ -51,7 +61,27 @@ export default (state = initialState, action) => {
         profiles: [...state.profiles, action.book],
         error: action.error,
       };
-
+    case DELETE_REVIEW_REQUEST:
+      return {
+        ...state,
+        isFetching: action.isFetching,
+        isAdding: action.isAdding,
+        error: action.error,
+      };
+    case DELETE_REVIEW_ERROR:
+      return {
+        ...state,
+        isFetching: action.isFetching,
+        isAdding: action.isAdding,
+        error: action.error,
+      };
+    case DELETE_REVIEW_SUCCES:
+      return {
+        ...state,
+        isFetching: action.isFetching,
+        isAdding: action.isAdding,
+        error: action.error,
+      };
     default:
       return state;
   }
