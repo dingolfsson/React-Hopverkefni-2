@@ -69,7 +69,7 @@ class Form extends Component {
     }
 
     const path = slug.pathname;
-    let newPath, title, data;
+    let newPath, title;
     if (path === '/books/new' && success) {
       newPath = '/books/' + books[0].id; 
       return <Redirect to={newPath} />;
@@ -80,6 +80,8 @@ class Form extends Component {
       return <Redirect to={newPath} />;
     }
 
+    let data = { ...this.state };
+    
     if (path === '/books/new') {
       title = 'Skrá bók';
       data = { ...this.state };
@@ -152,7 +154,7 @@ class Form extends Component {
             <label htmlFor="published">Published:</label>
             <input id="published" type="text" name="published" value={data.published} onChange={this.handleInputChange} />
           </div>
-
+          {/* <Button disabled={isAdding}/> Vista */}
           <button disabled={isAdding}>Vista</button>
         </form>
       </div>
