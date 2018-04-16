@@ -9,8 +9,8 @@ import Header from './components/header';
 import Home from './routes/home';
 import Login from './routes/login';
 import Register from './routes/register'
-import User from './routes/user'
-import UserID from './routes/userID'
+import User from './routes/user';
+import UserID from './routes/userID';
 import Profile from './routes/profile';
 import NotFound from './routes/not-found';
 import Books from './routes/books';
@@ -25,7 +25,7 @@ class App extends Component {
 
   render() {
     const authenticated = this.props.auth.isAuthenticated; /* vita hvort notandi sé innskráður */
-
+    console.info(authenticated);
     return (
       <main className="main">
         <Helmet defaultTitle="Bókasafnið" titleTemplate="%s – Bókasafnið" />
@@ -40,8 +40,8 @@ class App extends Component {
             <Route path="/profile" authenticated={authenticated} exact component={Profile} />
             <Route path="/profile/image" authenticated={authenticated} exact component={Image} />
             <Route path="/profile/update" authenticated={authenticated} exact component={PachUser} />
-            <Route path="/users" authenticated={authenticated} component={User} />
-            <Route path="/users/:id" authenticated={authenticated} component={UserID} />
+            <Route path="/users/:id" authenticated={authenticated} exact component={UserID} />
+            <Route path="/users" authenticated={authenticated} excat component={User} />
             <Route path="/books" exact component={Books} />
             <Route path="/books/new" authenticated={authenticated} exact component={Form} />
             <Route path="/books/:id" exact component={Book} />

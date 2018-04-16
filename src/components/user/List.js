@@ -4,8 +4,8 @@ import PropTypes from 'prop-types';
 export default class List extends Component {
   static propTypes = {
     title: PropTypes.string,
-    username: PropTypes.string.isRequired,
-    name: PropTypes.array.isRequired,
+    username: PropTypes.string,
+    name: PropTypes.array,
     id: PropTypes.number,
   }
 

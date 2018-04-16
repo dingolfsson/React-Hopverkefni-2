@@ -7,6 +7,7 @@ import User from '../../components/user';
 class Users extends Component {
 
   render() {
+    console.info('testssssss');
     return (
       <div>
         <User />

@@ -45,3 +45,19 @@ export const fetchUsers = () => {
     dispatch(receiveUsers(users.result));
   }
 }
+
+export const fetchUsersBookList = (url) => {
+  return async (dispatch) => {
+    dispatch(requestUsers());
+
+    let users;
+    try {
+      users = await api.get('/users');
+      console.info(users.result);
+    } catch (e) {
+      return dispatch(usersError(e))
+    }
+
+    dispatch(receiveUsers(users.result));
+  }
+}
