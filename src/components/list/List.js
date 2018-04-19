@@ -22,7 +22,7 @@ class List extends Component {
     let { dispatch, search, page } = this.props;    
     this.props.history.replace(`?search=${search}&page=${page+1}`);
      
-    dispatch(fetchBooks(this.props.history.location.search));
+    dispatch(fetchBooks(this.props.history.location.search, page));
   }
 
   handlePrevious = () => {

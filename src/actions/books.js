@@ -21,12 +21,13 @@ function booksError(error) {
   }
 }
 
-function receiveBooks(books) {
+function receiveBooks(books, page) {
   return {
     type: BOOKS_SUCCESS,
     isFetching: false,
     books,
     error: null,
+    page,
   }
 }
 
@@ -91,7 +92,7 @@ function receiveUpdateBook(book) {
   }
 }
 
-export const fetchBooks = (query) => {
+export const fetchBooks = (query, page) => {
   return async (dispatch) => {
     dispatch(requestBooks());
     let books;
@@ -102,7 +103,7 @@ export const fetchBooks = (query) => {
       console.error(e);
       return dispatch(booksError(e))
     }
-    dispatch(receiveBooks(books.result));
+    dispatch(receiveBooks(books.result, page+1));
   }
 }
 

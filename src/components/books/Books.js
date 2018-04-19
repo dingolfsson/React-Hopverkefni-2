@@ -28,9 +28,9 @@ class Books extends Component {
   
   render() {   
     const { isFetching, books, history } = this.props;
-    const page = Math.floor(books.offset / 10) + 1 | 0;
+    const page = this.props.page || Math.floor(books.offset / 10) + 1 | 0;
     const { isQuery, search } = this.state;
-    console.info(search);
+    console.info(page);
 
     let title = 'Bækur';
 
@@ -75,6 +75,7 @@ const mapStateToProps = (state) => {
     isFetching: state.books.isFetching,
     books: state.books.books,
     error: state.books.error,
+    page: state.books.page,
   }
 }
 
