@@ -103,7 +103,7 @@ export const fetchBooks = (query, page) => {
       console.error(e);
       return dispatch(booksError(e))
     }
-    dispatch(receiveBooks(books.result, page+1));
+    dispatch(receiveBooks(books.result, page));
   }
 }
 

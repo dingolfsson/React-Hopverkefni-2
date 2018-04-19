@@ -20,14 +20,15 @@ class List extends Component {
 
   handleNext = () => {    
     let { dispatch, search, page } = this.props;    
-    this.props.history.replace(`?search=${search}&page=${page+1}`);
+    this.props.history.replace(`?search=${search}&offset=${(page+1) * 10}`);
      
-    dispatch(fetchBooks(this.props.history.location.search, page));
+    dispatch(fetchBooks(this.props.history.location.search, page+1));
   }
 
   handlePrevious = () => {
-    const { search, page } = this.props;
-    this.props.history.replace(`/books?search=${search}&page=${page+1}`);
+    const { dispatch, search, page } = this.props;
+    this.props.history.replace(`?search=${search}&page=${(page-1) * 10}`);
+    dispatch(fetchBooks(this.props.history.location.search, page - 1));
   }
 
   render() {
@@ -40,7 +41,7 @@ class List extends Component {
         <div className="paging">
           <p>Síða {page}</p>
             {page > 1 && (
-            <Button> &lt; Fyrri síða </Button>
+            <Button onClick={this.handleNext}> &lt; Fyrri síða </Button>
           )}
           {(data && data.length === 10 ) && (
             <Button onClick={this.handleNext}> Næsta síða > </Button>
