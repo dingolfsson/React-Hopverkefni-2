@@ -17,7 +17,6 @@ class Books extends Component {
     const query = querystring.parse(search);
     
     dispatch(fetchBooks(search));
-
     if (query.search.length !== 0) {
       this.setState({ search: query.search, isQuery: true })
     }
@@ -28,6 +27,8 @@ class Books extends Component {
   }
   
   render() {   
+    console.info('=========');
+
     const { isFetching, books, history } = this.props;
     const page = Math.floor(books.offset / 10) + 1 | 0;
     const { isQuery, search } = this.state;
@@ -71,7 +72,6 @@ class Books extends Component {
 }
 
 const mapStateToProps = (state) => {
- 
   return {
     isFetching: state.books.isFetching,
     books: state.books.books,
