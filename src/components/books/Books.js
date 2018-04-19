@@ -27,11 +27,10 @@ class Books extends Component {
   }
   
   render() {   
-    console.info('=========');
-
     const { isFetching, books, history } = this.props;
     const page = Math.floor(books.offset / 10) + 1 | 0;
     const { isQuery, search } = this.state;
+    console.info(search);
 
     let title = 'Bækur';
 

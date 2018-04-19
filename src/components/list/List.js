@@ -32,6 +32,7 @@ class List extends Component {
 
   render() {
     const { title, data, page } = this.props;
+    
     return(
       <section className="list">
         <h2>{title}</h2>
@@ -54,7 +55,6 @@ const mapStateToProps = (state) => {
     isFetching: state.books.isFetching,
     books: state.books.books,
     error: state.books.error,
-    page: state.books.page,
   }
 }
 
