@@ -10,24 +10,19 @@ export default class List extends Component {
     title: PropTypes.string.isRequired,
     data: PropTypes.array,
     page: PropTypes.number,
+    history: PropTypes.object,
+    search: PropTypes.string
   }
 
-  componentWillMount() {
-    const { page } = this.props;
-    
+  handleNext = () => {    
+    const { search, page } = this.props;    
+    this.props.history.replace(`/books?search=${search}&page=${page+1}`);
   }
-  // static getDerivedStateFromProps(nextProps, prevState) {
-  //   console.log('getDerivedStateFromProps');
-  //   if (nextProps.value !== prevState.value) {
-  //       return {
-  //           previousChildren: nextProps.children,
-  //           pointerEvents: false,
-  //           value: nextProps,
-  //       };
-  //   }
 
-//     return null;
-// }
+  handlePrevious = () => {
+    const { search, page } = this.props;
+    this.props.history.replace(`/books?search=${search}&page=${page-1}`);
+  }
 
   render() {
     const { title, data, page } = this.props;
@@ -42,7 +37,7 @@ export default class List extends Component {
             <Button> &lt; Fyrri síða </Button>
           )}
           {(data && data.length === 10 ) && (
-            <Button> Næsta síða > </Button>
+            <Button onClick={this.handleNext}> Næsta síða > </Button>
           )}
         </div>
       </section>

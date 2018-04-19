@@ -97,6 +97,9 @@ export const fetchBooks = (query) => {
     dispatch(requestBooks());
     let books;
     try {
+      console.log(query);
+      console.log();
+      
       books = await api.get('/books' + query);       
     } catch (e) {
       return dispatch(booksError(e))

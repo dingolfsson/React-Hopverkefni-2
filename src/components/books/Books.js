@@ -14,16 +14,21 @@ class Books extends Component {
 
   async componentDidMount() {       
     const { dispatch, search, slug } = this.props;
+    const query = querystring.parse(search);
+    
     dispatch(fetchBooks(search));
 
-    if (search.length !== 0) {
-      this.setState({ search, isQuery: true })
+    if (query.search.length !== 0) {
+      this.setState({ search: query.search, isQuery: true })
     }
+  }
 
+  async componentDidUpdate(nextProps) {
+    this.props = nextProps;
   }
   
-  render() {
-    const { isFetching, books } = this.props;
+  render() {   
+    const { isFetching, books, history } = this.props;
     const page = Math.floor(books.offset / 10) + 1 | 0;
     const { isQuery, search } = this.state;
 
@@ -57,6 +62,8 @@ class Books extends Component {
             ))
           }
           page={page}
+          search={search}
+          history={history}
           />
     </div>
     )
