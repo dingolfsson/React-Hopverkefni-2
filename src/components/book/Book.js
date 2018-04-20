@@ -17,6 +17,10 @@ class Book extends Component {
     
   }
 
+  goBack() {
+    
+  }
+
   render() {
     const { isFetching, books, slug } = this.props;
 
