@@ -15,18 +15,19 @@ function requestBooks() {
 function booksError(error) {
   return {
     type: BOOKS_ERROR,
-    isFetching: true,
+    isFetching: false,
     books: [],
     error: error,
   }
 }
 
-function receiveBooks(books) {
+function receiveBooks(books, page) {
   return {
     type: BOOKS_SUCCESS,
     isFetching: false,
     books,
     error: null,
+    page,
   }
 }
 
@@ -92,13 +93,15 @@ function receiveUpdateBook(book) {
 }
 
 export const fetchBooks = (query) => {
+  console.log(query);
   
   return async (dispatch) => {
     dispatch(requestBooks());
     let books;
     try {
-      books = await api.get('/books' + query);       
+      books = await api.get('/books' + query);
     } catch (e) {
+      console.error(e);
       return dispatch(booksError(e))
     }
     dispatch(receiveBooks(books.result));

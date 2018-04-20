@@ -33,6 +33,7 @@ export default (state = initialState, action) => {
         isFetching: action.isFetching,
         books: action.books,
         error: action.error,
+        page: action.page || 1,
       };
 
     case BOOKS_ADD_REQUEST:
