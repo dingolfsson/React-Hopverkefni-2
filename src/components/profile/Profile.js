@@ -18,6 +18,7 @@ class Profile extends Component {
 
   render() {
     const { isFetching, profiles, isAuthenticated } = this.props;
+    const page = (profiles.offset / 10) + 1;
 
     if (!isAuthenticated) {
       return <Redirect to='/' />;
@@ -42,7 +43,8 @@ class Profile extends Component {
                 ><h4>{i.title}</h4></NavLink>
                 <p>Einkunn: {i.rating}</p>
               </div>)))
-          }
+          } 
+          page={page}
           />
     </div>
     );

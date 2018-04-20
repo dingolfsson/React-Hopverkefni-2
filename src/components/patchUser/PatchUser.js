@@ -64,7 +64,7 @@ class PatchUser extends Component {
             <label htmlFor="name">Nafn:</label>
             <input type="text" name="name" onChange={this.handleInputChange}/>
             </div>
-          <Button disabled={password === verify}>Uppfæra nafn</Button>
+          <Button>Uppfæra nafn</Button>
         </form>
         <form onSubmit={this.handleSubmit}>
             <div className="patchdiv">

@@ -14,7 +14,6 @@ class Image extends Component {
 
   handleInputChange = (e) => {
     const { name } = e.target;
-    // e.target.files[0]
     if (name) {
       this.setState({ [name]: e.target.files[0] });
     }

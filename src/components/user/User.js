@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { fetchUsers } from '../../actions/users';
 import { NavLink } from 'react-router-dom'
 
-import List from './List';
+import List from '../list';
 
 
 class User extends Component {
@@ -11,7 +11,6 @@ class User extends Component {
 
   componentDidMount() {
     const { dispatch } = this.props;
-    console.info(this.props);
     dispatch(fetchUsers());
   }
 
@@ -27,7 +26,7 @@ class User extends Component {
         <p>Sæki notendur..</p>
       );
     }
-    console.info(users);
+
     return (
       <div>
         <List 
