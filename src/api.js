@@ -145,6 +145,22 @@ async function patch(endpoint, data) {
   return { result, status: response.status };
 }
 
+async function deletBook(endpoint){
+  const url = `${baseurl}${endpoint}`;
+
+  const token = window.localStorage.getItem('token');
+  const options = {
+    headers: {},
+    method: 'DELETE',
+  };
+
+  if (token) {
+    options.headers['Authorization'] = `Bearer ${token}`;
+  }
+  const response = await fetch(url, options);
+  return { response };
+}
+
 
 export default {
   get,
@@ -153,4 +169,5 @@ export default {
   login,
   register,
   photo,
+  deletBook,
 };

@@ -24,7 +24,7 @@ class App extends Component {
 
   render() {
     const authenticated = this.props.auth.isAuthenticated; /* vita hvort notandi sé innskráður */
-
+    console.info(authenticated);
     return (
       <main className="main">
         <Helmet defaultTitle="Bókasafnið" titleTemplate="%s – Bókasafnið" />

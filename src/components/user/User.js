@@ -14,6 +14,7 @@ class User extends Component {
     dispatch(fetchUsers());
   }
 
+
   componentDidUpdate(nextProps) {
     this.props = nextProps;
   }
