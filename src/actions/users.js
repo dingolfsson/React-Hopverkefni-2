@@ -30,13 +30,15 @@ function receiveUsers(users) {
   }
 }
 
-export const fetchUsers = () => {
+export const fetchUsers = (query) => {    
+  if(!query) query = '';
   return async (dispatch) => {
     dispatch(requestUsers());
-
     let users;
     try {
-      users = await api.get('/users');
+      users = await api.get('/users'+ query);
+      console.log('/users' + query);
+      
       console.info(users.result);
     } catch (e) {
       return dispatch(usersError(e))

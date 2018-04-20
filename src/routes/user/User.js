@@ -10,7 +10,7 @@ class Users extends Component {
     console.info('testssssss');
     return (
       <div>
-        <User />
+        <User history={this.props.history} />
       </div>
     );
   }

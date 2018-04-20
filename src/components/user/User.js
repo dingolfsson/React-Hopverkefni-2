@@ -13,9 +13,15 @@ class User extends Component {
     const { dispatch } = this.props;
     dispatch(fetchUsers());
   }
- 
+
+
+  componentDidUpdate(nextProps) {
+    this.props = nextProps;
+  }
+
   render() {
     const { isFetching, users, isAuthenticated } = this.props;
+    const page = (users.offset / 10) + 1;    
 
     if (!isAuthenticated) {
       return <Redirect to='/' />;
@@ -40,6 +46,9 @@ class User extends Component {
                 ><h4>{i.name}</h4></NavLink>
               </div>)))
           }
+          history={this.props.history}
+          page={page}
+          fetch={fetchUsers}
           />
     </div>
     );
