@@ -42,7 +42,7 @@ class PachUser extends Component {
       );
     }
     return (
-      <section class='pachSection'>
+      <section className='pachSection'>
         {errors && (
           <ul>{errors.errors.map((error, i) => (
             <li key={i}>
@@ -50,17 +50,17 @@ class PachUser extends Component {
             </li>
           ))}</ul>
         )}
-        <h2 class='pachH' >uppfæra nafn og lykilorð</h2>
+        <h2 className='pachH' >uppfæra nafn og lykilorð</h2>
         {password === verify ? <p></p> : <p>passwords much mach</p>}
 
-        <form onSubmit={this.handleSubmit} class="pachForm">
-          <div class="pachdiv">
+        <form onSubmit={this.handleSubmit} className="pachForm">
+          <div className="pachdiv">
             <input type="text" name="name" onChange={this.handleInputChange}/>
             </div>
-            <div class="pachdiv">
+            <div className="pachdiv">
             <input type="password" name="password" onChange={this.handleInputChange}/>
             </div>
-            <div class="pachdiv">
+            <div className="pachdiv">
             <input type="password" name="verify" onChange={this.handleInputChange}/>
             </div>
 

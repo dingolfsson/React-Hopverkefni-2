@@ -11,7 +11,7 @@ class Profiles extends Component {
 
   render() {
     return (
-      <div class='profile'>
+      <div className='profile'>
         <Image />
         <PachUser />
         <Profile />

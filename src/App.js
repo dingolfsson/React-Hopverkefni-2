@@ -36,14 +36,14 @@ class App extends Component {
             <Route path="/" exact component={Home} />
             <Route path="/login" exact component={Login} />
             <Route path="/register" exact component={Register} />
-            <Route path="/profile" authenticated={authenticated} exact component={Profile} />
+            <Route path="/profile" exact component={Profile} />
             <Route path="/profile/image" authenticated={authenticated} exact component={Image} />
             <Route path="/profile/update" authenticated={authenticated} exact component={PachUser} />
-            <Route path="/users" authenticated={authenticated} component={User} />
+            <Route path="/users" component={User} />
             <Route path="/books" exact component={Books} />
-            <Route path="/books/new" authenticated={authenticated} exact component={Form} />
+            <Route path="/books/new" exact component={Form} />
             <Route path="/books/:id" exact component={Book} />
-            <Route path="/books/:id/edit" authenticated={authenticated} exact component={Form} />
+            <Route path="/books/:id/edit" exact component={Form} />
             <Route component={NotFound} />
           </Switch>
         </div>
