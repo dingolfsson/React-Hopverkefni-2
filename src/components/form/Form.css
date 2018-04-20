@@ -1,33 +1,8 @@
-/* body {
-  max-width: 1600px;
-}
-
-.form-container h1 {
-  padding-top: 2%;
-  padding-bottom: 2%;
-}
-
-.form-container {
-  max-width: 500px;
-  margin-left: 30vw;
-}
-
-input {
-  float: right;
-  height: 1.5em;
-  font-weight: 100;
-}
-
-form div {
-  padding: 1vh;
-}
-
 textarea {
   display: block;
-  width: 25vw;
+  width: 40vw;
   height: 150px;
+  font-size: 12px;
+  padding: .5rem;
+  line-height: 1.5;
 }
-
-select {
-  display: block;
-} */
