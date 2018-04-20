@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchUsers } from '../../actions/users';
-import { NavLink } from 'react-router-dom'
+import { NavLink, Redirect } from 'react-router-dom'
 
 import List from '../list';
 
@@ -15,8 +15,12 @@ class User extends Component {
   }
 
   render() {
-    const { isFetching, users } = this.props;
-    
+    const { isFetching, users, isAuthenticated } = this.props;
+
+    if (!isAuthenticated) {
+      return <Redirect to='/' />;
+    }
+
     if (isFetching) {
       return (
         <p>Sæki notendur..</p>
@@ -43,8 +47,8 @@ class User extends Component {
 }
 
 const mapStateToProps = (state) => {
-  console.info(state)
   return {
+    isAuthenticated: state.auth.isAuthenticated,
     isFetching: state.users.isFetching,
     users: state.users.users,
     error: state.users.error,

@@ -147,7 +147,7 @@ class Form extends Component {
 
           <div>
             <label htmlFor="pagecount ">Page:</label>
-            <input id="pagecount" type="text" name="pageCount" value={this.state.pagecount} onChange={this.handleInputChange} />
+            <input id="pagecount" type="text" name="pageCount" value={this.state.pageCount} onChange={this.handleInputChange} />
           </div>
 
           <div>
