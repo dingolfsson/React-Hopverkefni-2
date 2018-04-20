@@ -3,7 +3,9 @@ main {
 }
 
 .main__content { 
-    padding: 2rem 10rem;
+    /* padding: 2rem 10rem; */
+    max-width: 800px;
+    margin: 0 auto;
 }
 
 .page__title {

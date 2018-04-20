@@ -36,7 +36,7 @@ class List extends Component {
     const { title, data, page } = this.props;
     
     return(
-      <section className="list">
+      <section className="section__list">
         <h2 className="page__title">{title}</h2>
         {data}
         <div className="paging">
