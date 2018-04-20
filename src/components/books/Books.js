@@ -28,9 +28,8 @@ class Books extends Component {
   
   render() {   
     const { isFetching, books, history } = this.props;
-    const page = this.props.page || Math.floor(books.offset / 10) + 1 | 0;
+    const page = (books.offset / 10) + 1;
     const { isQuery, search } = this.state;
-    console.info(page);
 
     let title = 'Bækur';
 

@@ -92,18 +92,19 @@ function receiveUpdateBook(book) {
   }
 }
 
-export const fetchBooks = (query, page) => {
+export const fetchBooks = (query) => {
+  console.log(query);
+  
   return async (dispatch) => {
     dispatch(requestBooks());
     let books;
     try {
-      console.log(query);      
-      books = await api.get('/books' + query);       
+      books = await api.get('/books' + query);
     } catch (e) {
       console.error(e);
       return dispatch(booksError(e))
     }
-    dispatch(receiveBooks(books.result, page));
+    dispatch(receiveBooks(books.result));
   }
 }
 

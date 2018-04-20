@@ -19,16 +19,17 @@ class List extends Component {
   }
 
   handleNext = () => {    
-    let { dispatch, search, page } = this.props;    
-    this.props.history.replace(`?search=${search}&offset=${(page+1) * 10}`);
-     
-    dispatch(fetchBooks(this.props.history.location.search, page+1));
+    const { dispatch, search, page } = this.props;    
+    const offset = (page * 10)  
+    this.props.history.replace(`?search=${search}&page=${page + 1}`);
+    dispatch(fetchBooks(`?search=${search}&offset=${offset}`));
   }
 
   handlePrevious = () => {
     const { dispatch, search, page } = this.props;
-    this.props.history.replace(`?search=${search}&page=${(page-1) * 10}`);
-    dispatch(fetchBooks(this.props.history.location.search, page - 1));
+    const offset = ((page - 2) * 10)
+    this.props.history.replace(`?search=${search}&page=${page - 1}`);
+    dispatch(fetchBooks(`?search=${search}&offset=${offset}`));
   }
 
   render() {
@@ -41,7 +42,7 @@ class List extends Component {
         <div className="paging">
           <p>Síða {page}</p>
             {page > 1 && (
-            <Button onClick={this.handleNext}> &lt; Fyrri síða </Button>
+            <Button onClick={this.handlePrevious}> &lt; Fyrri síða </Button>
           )}
           {(data && data.length === 10 ) && (
             <Button onClick={this.handleNext}> Næsta síða > </Button>
