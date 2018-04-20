@@ -5,7 +5,7 @@ import { fetchProfiles } from '../../actions/profiles';
 import { fetchReadProfilesBooks } from '../../actions/profiles';
 import { fetchUserBooks } from '../../actions/books';
 
-import List from './List';
+import List from '../list';
 
 class Profile extends Component {
   state = {}

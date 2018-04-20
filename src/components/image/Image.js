@@ -36,9 +36,9 @@ class Image extends Component {
     }
 
     return (
-      <section class='imageSection'>
-        <h2 class='imageH'>uppfæra mynd</h2>
-        <form class='imageform' onSubmit={this.handleSubmit}>
+      <section class='image-section'>
+        <h2 class='page__title'>Uppfæra mynd</h2>
+        <form class='image-form' onSubmit={this.handleSubmit}>
           <div>
             <input type="file" name="file" accept="image/*" onChange={this.handleInputChange}/>
           </div>

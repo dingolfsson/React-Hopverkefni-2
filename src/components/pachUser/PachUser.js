@@ -16,7 +16,6 @@ class PachUser extends Component {
 
   handleInputChange = (e) => {
     const { name, value } = e.target;
-    // e.target.files[0]
     if (name) {
       this.setState({ [name]: value });
     }
@@ -41,8 +40,9 @@ class PachUser extends Component {
         <p>Sæki minnisatriði..</p>
       );
     }
+
     return (
-      <section class='pachSection'>
+      <section class='section__patch'>
         {errors && (
           <ul>{errors.errors.map((error, i) => (
             <li key={i}>
@@ -50,7 +50,8 @@ class PachUser extends Component {
             </li>
           ))}</ul>
         )}
-        <h2 class='pachH' >uppfæra nafn og lykilorð</h2>
+
+        <h2 class='page__title' >Uppfæra nafn og lykilorð</h2>
         {password === verify ? <p></p> : <p>passwords much mach</p>}
 
         <form onSubmit={this.handleSubmit} class="pachForm">
