@@ -162,6 +162,24 @@ export const deleteReadBook = (id) => {
     dispatch(receiveProfiles(profiles.result));
   }
 }
+export const addReadBook = (data) => {
+  return async (dispatch) => {
+    dispatch(addingProfile());
+    let book;
+    try{
+      book = await api.post('/users/me/read', { ...data });
+    }catch (e) {
+      return dispatch(addprofilesError(book.result));
+    }
+    if (book.status >= 400) {
+      return dispatch(addprofilesError(book.result));
+    }
+
+    dispatch(receiveAddProfile(book.result));
+
+  }
+}
+
 
 export const addProfile = (data) => {
   return async (dispatch) => {
