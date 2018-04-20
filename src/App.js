@@ -8,8 +8,9 @@ import Header from './components/header';
 
 import Home from './routes/home';
 import Login from './routes/login';
-import Register from './routes/register'
-import User from './routes/user'
+import Register from './routes/register';
+import User from './routes/user';
+import UserID from './routes/userID';
 import Profile from './routes/profile';
 import NotFound from './routes/not-found';
 import Books from './routes/books';
@@ -36,8 +37,9 @@ class App extends Component {
             <Route path="/login" exact component={Login} />
             <Route path="/register" exact component={Register} />
             <Route path="/profile" exact component={Profile} />
+            <Route path="/users/:id/read" authenticated={authenticated} exact component={UserID} />
             <Route path="/users" component={User} />
-            <Route path="/books" exact component={Books} />
+            <Route path="/books" authenticated={authenticated} exact component={Books} />
             <Route path="/books/new" exact component={Form} />
             <Route path="/books/:id" exact component={Book} />
             <Route path="/books/:id/edit" exact component={Form} />
