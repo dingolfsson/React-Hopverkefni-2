@@ -162,7 +162,6 @@ class Form extends Component {
           </div>
           <Button disabled={isAdding} className='vista' children='Vista'/>
         </form>
-        <Button onClick={this.goBack} className='back' children='Til Baka' /> 
       </div>
     )
   

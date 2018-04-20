@@ -7,23 +7,28 @@ import Button from '../button';
 
 class Book extends Component {
 
+  state = {
+    review: '',
+    grade: 0,
+    visible: false,
+  }
 
   async componentDidMount() {
     const { dispatch, slug } = this.props;
     dispatch(fetchBook(slug.pathname));
   }
 
-  review() {
-    
+  review(schoolId) {
+    return (e) => {
+      const visible = this.state.visible === schoolId ? null : schoolId;
+      this.setState({ visible });
+    }
   }
 
-  goBack() {
-    
-  }
 
   render() {
     const { isFetching, books, slug } = this.props;
-
+    const {visible} = this.state;
     if (isFetching) {
       return (
         <p>Sæki gögn..</p>
@@ -66,7 +71,16 @@ class Book extends Component {
         ><p>Breyta bók</p>  </NavLink>
 
         <Button onClick={this.review} className='readbook' children='Lesin Bók' />
-        
+        {visible && (
+          <div>
+            <label htmlFor="review">Um bók:</label>
+            <textarea id="review" type="text" name="review" value={this.state.review} onChange={this.handleInputChange} />
+            <label htmlFor="grade">Einkunn:</label>
+            <select></select>
+          </div>
+
+        )}
+
       </div>
     )
   }
