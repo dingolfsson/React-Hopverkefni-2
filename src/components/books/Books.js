@@ -31,10 +31,11 @@ class Books extends Component {
     const page = (books.offset / 10) + 1;
     const { isQuery, search } = this.state;
 
-    let title = 'Bækur';
+    let title = 'Bækur'
 
     if(isQuery) {
-      title = `Bókaleit: ${querystring.parse(search).search}`
+      if (search.length === 0) title = `Bókaleit: Allt`
+      else title = `Bókaleit: ${search}`
     }
 
     if (isFetching) {
