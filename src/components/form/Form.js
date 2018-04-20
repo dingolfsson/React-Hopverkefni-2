@@ -110,22 +110,22 @@ class Form extends Component {
         <form onSubmit={this.handleSubmit}>
 
           <div>
-            <label htmlFor="title">Title:</label>
+            <label htmlFor="title">Titill:</label>
             <input id="title" type="text" name="title" value={this.state.title} onChange={this.handleInputChange} />
           </div>
 
           <div>
-            <label htmlFor="author">Author:</label>
+            <label htmlFor="author">Höfundur:</label>
             <input id="author" type="text" name="author" value={this.state.author} onChange={this.handleInputChange} />
           </div>
 
-          <div>
-            <label htmlFor="description">Description:</label>
+          <div className="input__description">
+            <label htmlFor="description">Lýsing:</label>
             <textarea id="description" type="text" name="description" value={this.state.description} onChange={this.handleInputChange} />
           </div>
 
           <div>
-            <label htmlFor="category">Category:</label>
+            <label htmlFor="category">Flokkur:</label>
             <select onChange={this.handleInputChange} name='category'>
               {
                 categories.map((i) => (
@@ -146,17 +146,17 @@ class Form extends Component {
           </div>
 
           <div>
-            <label htmlFor="pagecount ">Page:</label>
+            <label htmlFor="pagecount ">Fjöldi síða:</label>
             <input id="pagecount" type="text" name="pageCount" value={this.state.pageCount} onChange={this.handleInputChange} />
           </div>
 
           <div>
-            <label htmlFor="language">Language:</label>
+            <label htmlFor="language">Tungumál:</label>
             <input id="language" type="text" name="language" value={this.state.language} onChange={this.handleInputChange} />
           </div>
 
           <div>
-            <label htmlFor="published">Published:</label>
+            <label htmlFor="published">Útgefin:</label>
             <input id="published" type="text" name="published" value={this.state.published} onChange={this.handleInputChange} />
           </div>
           <Button disabled={isAdding} className='vista' children='Vista'/>
