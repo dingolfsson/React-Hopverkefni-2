@@ -15,18 +15,19 @@ function requestBooks() {
 function booksError(error) {
   return {
     type: BOOKS_ERROR,
-    isFetching: true,
+    isFetching: false,
     books: [],
     error: error,
   }
 }
 
-function receiveBooks(books) {
+function receiveBooks(books, page) {
   return {
     type: BOOKS_SUCCESS,
     isFetching: false,
     books,
     error: null,
+    page,
   }
 }
 
@@ -91,14 +92,14 @@ function receiveUpdateBook(book) {
   }
 }
 
-export const fetchBooks = (query) => {
-  
+export const fetchBooks = (query) => {  
   return async (dispatch) => {
     dispatch(requestBooks());
     let books;
     try {
-      books = await api.get('/books' + query);       
+      books = await api.get('/books' + query);
     } catch (e) {
+      console.error(e);
       return dispatch(booksError(e))
     }
     dispatch(receiveBooks(books.result));
@@ -124,6 +125,21 @@ export const fetchUserIDBooks = (args) => {
     console.info("args", args);
     let readBooks;
     try {
+      readBooks = await api.get(args + '/read');
+    } catch (e) {
+      return dispatch(booksError(e))
+    }
+    console.info(readBooks.result);
+    dispatch(receiveBooks(readBooks.result));
+  }
+}
+/*
+export const fetchUserBooks = () => {
+  return async (dispatch) => {
+    dispatch(requestBooks());
+    console.info("args", args);
+    let readBooks;
+    try {
       readBooks = await api.get(args);
     } catch (e) {
       return dispatch(booksError(e))
@@ -132,7 +148,7 @@ export const fetchUserIDBooks = (args) => {
     dispatch(receiveBooks(readBooks.result));
   }
 }
-
+*/
 export const fetchUserBooks = (args) => {
   return async (dispatch) => {
     dispatch(requestBooks());

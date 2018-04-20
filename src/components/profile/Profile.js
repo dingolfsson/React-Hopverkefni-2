@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { NavLink } from 'react-router-dom'
+import { NavLink, Redirect } from 'react-router-dom'
 import { fetchProfiles } from '../../actions/profiles';
 import { fetchReadProfilesBooks, deleteReadBook } from '../../actions/profiles';
 import { fetchUserBooks } from '../../actions/books';
 
-import List from './List';
+import List from '../list';
 import Button from '../button';
 
 class Profile extends Component {
@@ -27,8 +27,13 @@ class Profile extends Component {
 
 
   render() {
-    const { isFetching, profiles } = this.props;
-    console.log('isFetching')
+    const { isFetching, profiles, isAuthenticated } = this.props;
+    const page = (profiles.offset / 10) + 1;
+
+    if (!isAuthenticated) {
+      return <Redirect to='/' />;
+    }
+
     if (isFetching) {
       return (
         <p>Sæki þínar upplýsingar..</p>
@@ -51,8 +56,9 @@ class Profile extends Component {
                   <Button >Eyda </Button>
                 </form>
               </div>)))
-            }
-            />
+          } 
+          page={page}
+          />
     </div>
     );
   }

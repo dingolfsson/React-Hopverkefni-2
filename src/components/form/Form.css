@@ -1,0 +1,8 @@
+textarea {
+  display: block;
+  width: 40vw;
+  height: 150px;
+  font-size: 12px;
+  padding: .5rem;
+  line-height: 1.5;
+}

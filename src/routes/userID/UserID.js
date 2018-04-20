@@ -5,7 +5,6 @@ import UserComponent from '../../components/userID';
 
 class UserID extends Component {
   render() {
-    console.info('test');
     return (
       <UserComponent slug={this.props.location} />
     );

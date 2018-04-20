@@ -55,7 +55,6 @@ export const fetchUserName = (id) => {
     } catch (e) {
       return dispatch(usersError(e))
     }
-    console.info(name.result);
     dispatch(receiveUsers(name.result.name));
   }
 }

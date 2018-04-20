@@ -174,7 +174,9 @@ export const updatePhoto = (file) => {
     if(update.result.error){
       dispatch(registerUpdate(update.result.error));
     }else{
-      dispatch(receiveUpdate(JSON.stringify(update.result)));
+      localStorage.removeItem('user');
+      localStorage.setItem('user', JSON.stringify(update.result));
+      dispatch(receiveUpdate(update.result));
     }
   }
 }

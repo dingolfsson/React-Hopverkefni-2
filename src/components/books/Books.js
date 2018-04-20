@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import querystring from 'query-string';
 import { fetchBooks } from '../../actions/books';
-import { NavLink, Route } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import List from '../list';
 
 class Books extends Component {
@@ -13,24 +13,29 @@ class Books extends Component {
   }
 
   async componentDidMount() {       
-    const { dispatch, search, slug } = this.props;
+    const { dispatch, search } = this.props;
+    const query = querystring.parse(search);
+    
     dispatch(fetchBooks(search));
-
     if (search.length !== 0) {
-      this.setState({ search, isQuery: true })
+      this.setState({ search: query.search, isQuery: true })
     }
+  }
 
+  async componentDidUpdate(nextProps) {
+    this.props = nextProps;
   }
   
-  render() {
-    const { isFetching, books } = this.props;
-    const page = Math.floor(books.offset / 10) + 1 | 0;
+  render() {   
+    const { isFetching, books, history } = this.props;
+    const page = (books.offset / 10) + 1;
     const { isQuery, search } = this.state;
 
-    let title = 'Bækur';
+    let title = 'Bækur'
 
     if(isQuery) {
-      title = `Bókaleit: ${querystring.parse(search).search}`
+      if (search.length === 0) title = `Bókaleit: Allt`
+      else title = `Bókaleit: ${search}`
     }
 
     if (isFetching) {
@@ -51,12 +56,18 @@ class Books extends Component {
                   className="navigation__link"
                 ><h4>{i.title}</h4>
                 </NavLink>
-                <p>Eftir {i.author}, gefin út {i.published}</p>
+                <p>Eftir {i.author}
+                {i.published && (`, gefin út ${i.published}`)
+                  }
+                </p>
+
               </div>
               )
             ))
           }
           page={page}
+          search={search}
+          history={history}
           />
     </div>
     )
@@ -64,11 +75,11 @@ class Books extends Component {
 }
 
 const mapStateToProps = (state) => {
- 
   return {
     isFetching: state.books.isFetching,
     books: state.books.books,
     error: state.books.error,
+    page: state.books.page,
   }
 }
 

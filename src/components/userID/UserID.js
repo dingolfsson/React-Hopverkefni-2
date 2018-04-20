@@ -34,7 +34,7 @@ class UserID extends Component {
                   to={'/books/' + i.book_id}
                   className="navigation__link"
                 ><h4>{i.title}</h4></NavLink>
-                <p>Einkunn: {i.rating}</p>
+                <p>Einkunn: {i.rating}. {i.review}</p>
               </div>)))
           }
           />
@@ -48,7 +48,7 @@ const mapStateToProps = (state) => {
     isFetching: state.users.isFetching,
     books: state.books.books,
     error: state.books.error,
-    name: state.users.users
+    users: state.users.users
   }
 }
 
