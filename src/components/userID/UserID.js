@@ -26,7 +26,7 @@ class UserID extends Component {
     return (
       <div>
         <List 
-          title={ "NAME" } 
+          title={ "Lesnar bækur" } 
           data={books.items && (
             books.items.map((i) => (
               <div key={i.id} className="bookRead__item">
@@ -34,7 +34,7 @@ class UserID extends Component {
                   to={'/books/' + i.book_id}
                   className="navigation__link"
                 ><h4>{i.title}</h4></NavLink>
-                <p>Einkunn: {i.rating}</p>
+                <p>Einkunn: {i.rating}. {i.review}</p>
               </div>)))
           }
           />
