@@ -12,7 +12,7 @@ class Image extends Component {
 
 
   handleInputChange = (e) => {
-    const { name, value } = e.target;
+    const { name } = e.target;
     // e.target.files[0]
     if (name) {
       this.setState({ [name]: e.target.files[0] });
@@ -28,7 +28,7 @@ class Image extends Component {
   }
 
   render() {
-    const { isFetching, profiles } = this.props;
+    const { isFetching } = this.props;
     if (isFetching) {
       return (
         <p>Sæki minnisatriði..</p>

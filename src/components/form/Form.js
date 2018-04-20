@@ -30,7 +30,7 @@ class Form extends Component {
   handleSubmit = async (e) => {
     e.preventDefault();
 
-    const { dispatch, slug, success } = this.props;
+    const { dispatch, slug } = this.props;
     const data = { ...this.state };
     const path = slug.pathname;
     const newPath = path.replace('edit', '');
