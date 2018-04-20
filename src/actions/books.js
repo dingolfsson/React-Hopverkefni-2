@@ -125,7 +125,7 @@ export const fetchUserIDBooks = (args) => {
     console.info("args", args);
     let readBooks;
     try {
-      readBooks = await api.get(args);
+      readBooks = await api.get(args + '/read');
     } catch (e) {
       return dispatch(booksError(e))
     }
