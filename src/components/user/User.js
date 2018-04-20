@@ -35,7 +35,7 @@ class User extends Component {
             users.items.map((i) => (
               <div key={i.id} className="user__item">
                 <NavLink
-                  to={'/users/' + i.id + "/read/"}
+                  to={'/users/' + i.id}
                   className="navigation__link"
                 ><h4>{i.name}</h4></NavLink>
               </div>)))
