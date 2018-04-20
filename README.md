@@ -15,7 +15,7 @@ The current project is connected to the [API](https://vefforritun2-h1-synilausn.
 
 ### The A-Team
 
-\- [Alexander Freyr Sveinsson](https://github.com/mimiqkz/) -  <br>
-\- [Alexandra Mjöll Young](https://github.com/meatyminx) - amy1@hi.is<br>
-\- [Daníel Ingólfsson ](https://github.com/mimiqkz/) -  dai5@hi.is<br>
-\- [Nu Phan Quynh Do](https://github.com/mimiqkz/) npq1@hi.is <br>
+\- [Alexander Freyr Sveinsson](https://github.com/mimiqkz/) <br>
+\- [Alexandra Mjöll Young](https://github.com/meatyminx) <br>
+\- [Daníel Ingólfsson ](https://github.com/mimiqkz/)<br>
+\- [Nu Phan Quynh Do](https://github.com/mimiqkz/)<br>
