@@ -63,7 +63,7 @@ class Register extends Component {
             <input id="password" type="password" name="password" value={password} onChange={this.handleInputChange} />
           </div>
 
-          <Button disabled={isFetching}>Innskrá</Button>
+          <Button disabled={isFetching}>Nýskrá</Button>
           <p><Link to="/login">Innskráning</Link></p>
         </form>
       </div>

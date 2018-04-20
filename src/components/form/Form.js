@@ -98,7 +98,7 @@ class Form extends Component {
 
     return (
       <div className='form-container'>              
-        <h1>{title}</h1>
+        <h2 className="page__title">{title}</h2>
         {errors.errors && (
           <ul>{errors.errors.map((error, i) => (
             <li key={i}>
@@ -110,7 +110,7 @@ class Form extends Component {
         <form onSubmit={this.handleSubmit}>
 
           <div>
-            <label htmlFor="title">Tittle:</label>
+            <label htmlFor="title">Title:</label>
             <input id="title" type="text" name="title" value={this.state.title} onChange={this.handleInputChange} />
           </div>
 

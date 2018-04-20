@@ -27,10 +27,8 @@ label {
     width: 20%;
 }
 
-
 input {
     padding: 1rem .5rem;
-    width: 10rem;
     float: none;
     width: 20rem;
 }

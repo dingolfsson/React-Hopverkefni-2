@@ -11,19 +11,20 @@
   text-decoration: none;
 }
 
+.header > * {
+  margin: .5rem;
+}
+
 .user-wrapper {
   display: flex;
   justify-content: flex-end;
-  max-width: 300px;
+  max-width: 40rem;
+  padding: 0 2rem;
 }
-
-
 
 .right-wrapper {
   display: flex;
-  align-content: flex-end;
-  justify-content: flex-end;
-  align-items: flex-end; 
+  justify-content: center; 
   flex-direction: column;
   margin-right: 3%;
 }

@@ -1,16 +1,16 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import PachUser from '../../components/pachUser';
+import PatchUser from '../../components/patchUser';
 
 class PachUsers extends Component {
 
   render() {
     return (
       <div>
-        <PachUser />
+        <PatchUser />
       </div>
     );
   }
 }
 
-export default PachUser;
+export default PatchUser;

@@ -1,15 +1,5 @@
 
-.imageform{
+.image-form{
     display: flex;
 
-}
-.imageSection{
-    min-height: 200px;
-    display: flex;
-    flex-direction: row;
-    flex-flow: wrap;
-    padding: 10px;
-}
-.imageH{
-    width: 100%;
 }
