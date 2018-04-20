@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { NavLink } from 'react-router-dom'
+import { NavLink, Redirect } from 'react-router-dom'
 import { fetchProfiles } from '../../actions/profiles';
 import { fetchReadProfilesBooks } from '../../actions/profiles';
 import { fetchUserBooks } from '../../actions/books';
@@ -17,8 +17,12 @@ class Profile extends Component {
   }
 
   render() {
-    const { isFetching, profiles } = this.props;
+    const { isFetching, profiles, isAuthenticated } = this.props;
     const page = (profiles.offset / 10) + 1;
+
+    if (!isAuthenticated) {
+      return <Redirect to='/' />;
+    }
 
     if (isFetching) {
       return (
@@ -49,6 +53,7 @@ class Profile extends Component {
 
 const mapStateToProps = (state) => {
   return {
+    isAuthenticated: state.auth.isAuthenticated,
     isFetching: state.users.isFetching,
     profiles: state.books.books,
     error: state.books.error,

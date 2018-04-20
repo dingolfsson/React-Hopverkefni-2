@@ -44,6 +44,7 @@ class Form extends Component {
 
   async componentDidMount() {
     const { dispatch, books, slug } = this.props;
+    console.log(this.props)
     dispatch(fetchCategories());
     const path = slug.pathname;
     if (path !== '/books/new') {
@@ -58,7 +59,11 @@ class Form extends Component {
 
 
   render() {
-    const { isAdding, errors, isFetching, categories, success, slug, books } = this.props;
+    const { isAdding, isAuthenticated, errors, isFetching, categories, success, slug, books } = this.props;
+    
+    if(!isAuthenticated) {
+      return <Redirect to='/'/>;
+    }
 
     if(isAdding) {
       return (
@@ -165,6 +170,7 @@ class Form extends Component {
 
 const mapStateToProps = (state) => {
   return {
+    isAuthenticated: state.auth.isAuthenticated,
     isAdding: state.books.isAdding,
     isUpdating: state.books.isUpdating,
     errors: state.books.errors,

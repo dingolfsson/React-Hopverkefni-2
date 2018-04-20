@@ -15,7 +15,7 @@ import NotFound from './routes/not-found';
 import Books from './routes/books';
 import Book from './routes/book';
 import Form from './routes/form';
-import Image from './routes/image';
+
 
 import './App.css';
 
@@ -35,12 +35,12 @@ class App extends Component {
             <Route path="/" exact component={Home} />
             <Route path="/login" exact component={Login} />
             <Route path="/register" exact component={Register} />
-            <Route path="/profile" authenticated={authenticated} exact component={Profile} />
-            <Route path="/users" authenticated={authenticated} component={User} />
+            <Route path="/profile" exact component={Profile} />
+            <Route path="/users" component={User} />
             <Route path="/books" exact component={Books} />
-            <Route path="/books/new" authenticated={authenticated} exact component={Form} />
+            <Route path="/books/new" exact component={Form} />
             <Route path="/books/:id" exact component={Book} />
-            <Route path="/books/:id/edit" authenticated={authenticated} exact component={Form} />
+            <Route path="/books/:id/edit" exact component={Form} />
             <Route component={NotFound} />
           </Switch>
         </div>

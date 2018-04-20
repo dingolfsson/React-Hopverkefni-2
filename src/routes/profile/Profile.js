@@ -9,7 +9,7 @@ class Profiles extends Component {
 
   render() {
     return (
-      <div class='profile'>
+      <div className='profile'>
         <h2 className="page__title">Upplýsingar</h2>
         <Image />
         <PatchUser />

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { updatePhoto } from '../../actions/auth';
 import Button from '../button';
+import { Redirect } from 'react-router';
 
 import './Image.css';
 
@@ -13,7 +14,6 @@ class Image extends Component {
 
   handleInputChange = (e) => {
     const { name } = e.target;
-    // e.target.files[0]
     if (name) {
       this.setState({ [name]: e.target.files[0] });
     }
@@ -28,7 +28,12 @@ class Image extends Component {
   }
 
   render() {
-    const { isFetching } = this.props;
+    const { isFetching, isAuthenticated } = this.props;
+
+    if (!isAuthenticated) {
+      return <Redirect to='/' />;
+    }
+
     if (isFetching) {
       return (
         <p>Sæki minnisatriði..</p>
@@ -36,8 +41,8 @@ class Image extends Component {
     }
 
     return (
-      <section class='image-section'>
-        <form class='image-form' onSubmit={this.handleSubmit}>
+      <section className='image-section'>
+        <form className='image-form' onSubmit={this.handleSubmit}>
           <div>
             <input type="file" name="file" accept="image/*" onChange={this.handleInputChange}/>
           </div>
@@ -50,6 +55,7 @@ class Image extends Component {
 
 const mapStateToProps = (state) => {
   return {
+    isAuthenticated: state.auth.isAuthenticated,
     isFetching: state.books.isFetching,
     profiles: state.books.books,
     error: state.books.error,

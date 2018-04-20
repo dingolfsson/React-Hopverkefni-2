@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { updateUser } from '../../actions/auth';
 import Button from '../button';
+import { Redirect } from 'react-router';
 
 import './PatchUser.css';
 
@@ -33,8 +34,13 @@ class PatchUser extends Component {
   }
 
   render() {
-    const { isFetching, profiles, errors } = this.props;
+    const { isFetching, profiles, errors, isAuthenticated } = this.props;
     const { password, verify} = this.state;
+
+    if (!isAuthenticated) {
+      return <Redirect to='/' />;
+    }
+
     if (isFetching) {
       return (
         <p>Sæki minnisatriði..</p>
@@ -42,7 +48,7 @@ class PatchUser extends Component {
     }
 
     return (
-      <section class='section__patch'>
+      <section className='section__patch'>
         {errors && (
           <ul>{errors.errors.map((error, i) => (
             <li key={i}>
@@ -54,18 +60,18 @@ class PatchUser extends Component {
         {password === verify ? <p></p> : <p>passwords much match</p>}
 
         <form onSubmit={this.handleSubmit}>
-          <div class="patchdiv">
+          <div className="patchdiv">
             <label htmlFor="name">Nafn:</label>
             <input type="text" name="name" onChange={this.handleInputChange}/>
             </div>
           <Button>Uppfæra nafn</Button>
         </form>
         <form onSubmit={this.handleSubmit}>
-            <div class="patchdiv">
+            <div className="patchdiv">
             <label htmlFor="name">Lykilorð:</label>
             <input type="password" name="password" onChange={this.handleInputChange}/>
             </div>
-            <div class="patchdiv">
+            <div className="patchdiv">
             <label htmlFor="name">Lykilorð, aftur:</label>
             <input type="password" name="verify" onChange={this.handleInputChange}/>
             </div>
@@ -78,6 +84,7 @@ class PatchUser extends Component {
 
 const mapStateToProps = (state) => {
   return {
+    isAuthenticated: state.auth.isAuthenticated,
     isFetching: state.books.isFetching,
     profiles: state.books.books,
     error: state.books.error,
