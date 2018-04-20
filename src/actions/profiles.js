@@ -89,6 +89,34 @@ function receiveUpdateProfile(profile) {
   }
 }
 
+export const DELETE_REVIEW_REQUEST = 'DELETE_REVIEW_REQUEST';
+export const DELETE_REVIEW_ERROR = 'DELETE_REVIEW_ERROR';
+export const DELETE_REVIEW_SUCCES = 'DELETE_REVIEW_SUCCES';
+
+function DeleteReview() {
+  return {
+    type: DELETE_REVIEW_SUCCES,
+    isFetching: false,
+    error: null,
+  }
+}
+
+function DeleteReviewError(errors) {
+  return {
+    type: DELETE_REVIEW_ERROR,
+    isFetching: false,
+    errors,
+  }
+}
+
+function receiveDeleteReview(profile) {
+  return {
+    type: DELETE_REVIEW_REQUEST,
+    isFetching: true,
+    errors: null,
+  }
+}
+
 export const fetchProfiles = () => {
   return async (dispatch) => {
     dispatch(requestsProfiles());
@@ -115,7 +143,22 @@ export const fetchReadProfilesBooks = () => {
     } catch (e) {
       return dispatch(profilesError(e))
     }
+    dispatch(receiveProfiles(profiles.result));
+  }
+}
 
+export const deleteReadBook = (id) => {
+  return async (dispatch) => {
+    console.log('here');
+    dispatch(receiveDeleteReview());
+    let profiles;
+    try {
+      const c = await api.deletBook(`/users/me/read/${id}`);
+      profiles = await api.get('/users/me/read');
+    }catch (e) {
+      console.error(e);
+      return dispatch(DeleteReviewError(e));
+    }
     dispatch(receiveProfiles(profiles.result));
   }
 }

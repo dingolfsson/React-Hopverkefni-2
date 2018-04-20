@@ -10,13 +10,13 @@ class UserID extends Component {
 
   async componentDidMount() {
     const { dispatch, slug } = this.props;
-    dispatch(fetchUserIDBooks(slug.pathname));
+    dispatch(fetchUserIDBooks(slug.pathname + '/read'));
     dispatch(fetchUserName(slug.pathname))
   }
 
   render() {
-    const { isFetching, books, slug, users } = this.props;
-    console.info(this.props);
+    const { isFetching, books, slug, name } = this.props;
+
     if (isFetching) {
       return (
         <p>Sæki gögn..</p>
@@ -26,7 +26,7 @@ class UserID extends Component {
     return (
       <div>
         <List 
-          title={ "Lesnar bækur" } 
+          title={ name } 
           data={books.items && (
             books.items.map((i) => (
               <div key={i.id} className="bookRead__item">
