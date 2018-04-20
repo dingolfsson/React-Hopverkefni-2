@@ -3,10 +3,10 @@ import { connect } from 'react-redux';
 import { updateUser } from '../../actions/auth';
 import Button from '../button';
 
-import './PachUser.css';
+import './PatchUser.css';
 
 
-class PachUser extends Component {
+class PatchUser extends Component {
   state = {
     name: null,
     password: null,
@@ -51,21 +51,25 @@ class PachUser extends Component {
           ))}</ul>
         )}
 
-        <h2 class='page__title' >Uppfæra nafn og lykilorð</h2>
-        {password === verify ? <p></p> : <p>passwords much mach</p>}
+        {password === verify ? <p></p> : <p>passwords much match</p>}
 
-        <form onSubmit={this.handleSubmit} class="pachForm">
-          <div class="pachdiv">
+        <form onSubmit={this.handleSubmit}>
+          <div class="patchdiv">
+            <label htmlFor="name">Nafn:</label>
             <input type="text" name="name" onChange={this.handleInputChange}/>
             </div>
-            <div class="pachdiv">
+          <Button disabled={password === verify}>Uppfæra nafn</Button>
+        </form>
+        <form onSubmit={this.handleSubmit}>
+            <div class="patchdiv">
+            <label htmlFor="name">Lykilorð:</label>
             <input type="password" name="password" onChange={this.handleInputChange}/>
             </div>
-            <div class="pachdiv">
+            <div class="patchdiv">
+            <label htmlFor="name">Lykilorð, aftur:</label>
             <input type="password" name="verify" onChange={this.handleInputChange}/>
             </div>
-
-           <Button disabled={password === verify}>Skrá</Button>
+           <Button disabled={password === verify}>Uppfæra lykilorð</Button>
         </form>    
       </section>
     );
@@ -80,4 +84,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps)(PachUser);
+export default connect(mapStateToProps)(PatchUser);

@@ -18,7 +18,8 @@
 .user-wrapper {
   display: flex;
   justify-content: flex-end;
-  max-width: 30rem;
+  max-width: 40rem;
+  padding: 0 2rem;
 }
 
 .right-wrapper {
