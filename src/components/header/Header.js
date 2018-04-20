@@ -23,11 +23,14 @@ class Header extends Component {
           <Link to="/" className="header__heading"><h1>Bókasafnið</h1></Link>
           <Search />
           {this.props.auth.isAuthenticated ? (
-            <div>
-              <Link to="/profile">{name}</Link>
-              <Button onClick={this.handleLogout}>Logout</Button>
-              <img src={image} alt="user pic" />
-            </div>
+            <div className="user-wrapper">
+                <img src={image} alt="user pic" />
+        
+              <div className="right-wrapper">
+                <Link to="/profile">{name}</Link>
+                <Button onClick={this.handleLogout}>Logout</Button>
+              </div>     
+             </div>
           ) : (
               <Link to="/login">Innskráning</Link>
           )

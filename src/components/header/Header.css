@@ -2,29 +2,34 @@
   background-color: #dcbe87;
   display: flex;
   justify-content: space-between;
+  align-items: center;
   margin-bottom: auto;
   margin-top: auto;
 }
 
 .header > * {
-  padding: 1rem;
+  margin: .5rem;
 }
 
 .header__heading {
   text-decoration: none;
 }
 
-img{
+.user-wrapper {
+  display: flex;
+}
+
+.user-wrapper > * {
+  margin: 0 .5rem;
+}
+
+.right-wrapper > * {
+  display: flex;
+  flex-direction: column;
+}
+
+img {
   width: 10%;
   height: 10%;
-  margin-left: auto;
-  margin-right: 10%;
   border-radius: 50%;
 }
-
-button{
-  margin-bottom: auto;
-  margin-top: auto;
-}
-
-
