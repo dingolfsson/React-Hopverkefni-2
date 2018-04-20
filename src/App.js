@@ -37,7 +37,7 @@ class App extends Component {
             <Route path="/login" exact component={Login} />
             <Route path="/register" exact component={Register} />
             <Route path="/profile" exact component={Profile} />
-            <Route path="/users/:id/read" authenticated={authenticated} exact component={UserID} />
+            <Route path="/users/:id" authenticated={authenticated} exact component={UserID} />
             <Route path="/users" component={User} />
             <Route path="/books" authenticated={authenticated} exact component={Books} />
             <Route path="/books/new" exact component={Form} />
