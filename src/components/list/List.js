@@ -18,18 +18,27 @@ class List extends Component {
     search: PropTypes.string
   }
 
+  componentDidMount() {
+    if (this.props.search) {
+      this.setState({ isSearch: true });
+    } else {
+      this.setState({ isSearch: false });
+    }
+  }
+
   handleNext = () => {    
-    const { dispatch, search, page } = this.props;    
-    const offset = (page * 10)  
-    this.props.history.replace(`?search=${search}&page=${page + 1}`);
-    dispatch(fetchBooks(`?search=${search}&offset=${offset}`));
+    const { dispatch, search, page, fetch } = this.props;    
+    const offset = (page * 10)     
+    this.props.history.replace(`?search=${search}page=${page + 1}`);
+    dispatch(fetch(`?offset=${offset}`));
   }
 
   handlePrevious = () => {
-    const { dispatch, search, page } = this.props;
+    const { dispatch, search, page, fetch } = this.props;
     const offset = ((page - 2) * 10)
     this.props.history.replace(`?search=${search}&page=${page - 1}`);
-    dispatch(fetchBooks(`?search=${search}&offset=${offset}`));
+    dispatch(fetch(`?search=${search}&offset=${offset}`));
+
   }
 
   render() {

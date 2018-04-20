@@ -9,7 +9,7 @@ class Users extends Component {
   render() {
     return (
       <div>
-        <User />
+        <User history={this.props.history} />
       </div>
     );
   }

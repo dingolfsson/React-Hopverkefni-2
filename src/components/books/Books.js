@@ -68,6 +68,7 @@ class Books extends Component {
           page={page}
           search={search}
           history={history}
+          fetch={fetchBooks}
           />
     </div>
     )
