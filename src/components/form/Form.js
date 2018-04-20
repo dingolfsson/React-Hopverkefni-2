@@ -44,8 +44,9 @@ class Form extends Component {
 
   async componentDidMount() {
     const { dispatch, books, slug } = this.props;
-    console.log(this.props)
+    
     dispatch(fetchCategories());
+
     const path = slug.pathname;
     if (path !== '/books/new') {
       this.setState({ ...books });
@@ -161,6 +162,7 @@ class Form extends Component {
           </div>
           <Button disabled={isAdding} className='vista' children='Vista'/>
         </form>
+        <Button onClick={this.goBack} className='back' children='Til Baka' /> 
       </div>
     )
   

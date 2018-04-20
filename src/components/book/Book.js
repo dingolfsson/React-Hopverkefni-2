@@ -16,6 +16,10 @@ class Book extends Component {
     
   }
 
+  goBack() {
+    
+  }
+
   render() {
     const { isFetching, books, slug } = this.props;
 
@@ -60,8 +64,13 @@ class Book extends Component {
         <NavLink to={newPath} className="navigation__link"
         ><p>Breyta bók</p>  </NavLink>
 
-        <Button onClick={this.review} className='readbook' children='Lesin Bók' />
-        <Button className='back' children='Til Baka' />
+        <div>
+          <Button onClick={this.review} className='readbook' children='Lesin Bók' />
+        </div>
+
+        <div>
+          <Button onClick={this.goBack} className='back' children='Til Baka' /> 
+        </div>
         
       </div>
     )
