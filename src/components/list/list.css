@@ -3,6 +3,6 @@
     align-items: center;
 }
 
-.paging:not(:first-child) {
+.paging > * {
     margin: 0 1rem;
 }

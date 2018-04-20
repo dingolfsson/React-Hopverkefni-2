@@ -1,0 +1,20 @@
+.login-form {
+    width: 80%;
+}
+
+.login-form > * {
+    margin-bottom: 1rem;
+}
+
+label, input {
+    display: inline-block;
+}
+
+label {
+    width: 20%;
+}
+
+.form-input {
+    float: none;
+    width: 20rem;
+}

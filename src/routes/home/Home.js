@@ -7,8 +7,6 @@ class Home extends Component {
 
   render() {
     const { isAuthenticated, name } = this.props;
-    /* todo birta mismunandi upplýsingar ef innskráður notandi eða ekki */
-    console.info(name);
 
     if (isAuthenticated) {
       return (
@@ -28,8 +26,6 @@ class Home extends Component {
   }
 }
 
-/* todo setja upp tengingu við redux til að vita stöðu notanda */
-// export default Home;
 const mapStateToProps = (state) => {
   return {
     isFetching: state.auth.isFetching,

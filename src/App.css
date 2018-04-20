@@ -9,3 +9,8 @@ main {
 .page__title {
     padding: 1rem 0;
 }
+
+input {
+    padding: 1rem .5rem;
+    width: 10rem;
+}
