@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import { registerUser } from '../../actions/auth';
 import { Link } from 'react-router-dom';
 
+import Button from '../../components/button'
+
 class Register extends Component {
   state = {
     username: '',
@@ -52,7 +54,7 @@ class Register extends Component {
           </div>
 
           <div>
-            <label htmlFor="username">nafn:</label>
+            <label htmlFor="username">Nafn:</label>
             <input id="fname" type="text" name="fname" value={fname} onChange={this.handleInputChange} />
           </div>
 
@@ -61,7 +63,7 @@ class Register extends Component {
             <input id="password" type="password" name="password" value={password} onChange={this.handleInputChange} />
           </div>
 
-          <button disabled={isFetching}>Innskrá</button>
+          <Button disabled={isFetching}>Innskrá</Button>
           <p><Link to="/login">Innskráning</Link></p>
         </form>
       </div>

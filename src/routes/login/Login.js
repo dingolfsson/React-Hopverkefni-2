@@ -5,8 +5,6 @@ import { loginUser, logoutUser } from '../../actions/auth';
 import { Link } from 'react-router-dom';
 import Button from '../../components/button';
 
-import './Login.css';
-
 class Login extends Component {
   state = {
     username: '',

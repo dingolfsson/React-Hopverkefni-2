@@ -18,27 +18,24 @@ class Header extends Component {
 
   render() {
     const { name, image } = this.props;
-    if (this.props.auth.isAuthenticated) {
       return (
         <header className="header">
           <Link to="/" className="header__heading"><h1>Bókasafnið</h1></Link>
           <Search />
-          <Link to="/profile">{ name }</Link>
-          <Button onClick={this.handleLogout}>Logout</Button>
-          <img src={image} alt="user pic"/>
+          {this.props.auth.isAuthenticated ? (
+            <div>
+              <Link to="/profile">{name}</Link>
+              <Button onClick={this.handleLogout}>Logout</Button>
+              <img src={image} alt="user pic" />
+            </div>
+          ) : (
+              <Link to="/login">Innskráning</Link>
+          )
+        
+        }
         </header>
       );
     }
-    return (
-      <header className="header">
-        <Link to="/" className="header__heading"><h1>Bókasafnið</h1></Link>
-
-        <Search />
-        
-        <Link to="/login">Innskráning</Link>
-      </header>
-    );
-  }
 }
 
 const mapStateToProps = (state) => {
