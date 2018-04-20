@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import { Link } from 'react-router-dom';
-
 import Search from '../search';
 import Button from '../button';
 import { loginUser, logoutUser } from '../../actions/auth';

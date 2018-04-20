@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { NavLink, Redirect } from 'react-router-dom';
 import { fetchBook } from '../../actions/books';
+import { browserHistory } from 'react-router'
 import Button from '../button';
 
 class Book extends Component {
@@ -61,7 +62,6 @@ class Book extends Component {
         ><p>Breyta bók</p>  </NavLink>
 
         <Button onClick={this.review} className='readbook' children='Lesin Bók' />
-        <Button className='back' children='Til Baka' />
         
       </div>
     )
