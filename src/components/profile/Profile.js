@@ -18,6 +18,8 @@ class Profile extends Component {
 
   render() {
     const { isFetching, profiles } = this.props;
+    const page = (profiles.offset / 10) + 1;
+
     if (isFetching) {
       return (
         <p>Sæki þínar upplýsingar..</p>
@@ -37,7 +39,8 @@ class Profile extends Component {
                 ><h4>{i.title}</h4></NavLink>
                 <p>Einkunn: {i.rating}</p>
               </div>)))
-          }
+          } 
+          page={page}
           />
     </div>
     );
