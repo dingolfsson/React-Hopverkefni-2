@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { updateUser } from '../../actions/auth';
 import Button from '../button';
+import { Redirect } from 'react-router';
 
 import './PatchUser.css';
 
@@ -33,8 +34,13 @@ class PatchUser extends Component {
   }
 
   render() {
-    const { isFetching, profiles, errors } = this.props;
+    const { isFetching, profiles, errors, isAuthenticated } = this.props;
     const { password, verify} = this.state;
+
+    if (!isAuthenticated) {
+      return <Redirect to='/' />;
+    }
+
     if (isFetching) {
       return (
         <p>Sæki minnisatriði..</p>
@@ -78,6 +84,7 @@ class PatchUser extends Component {
 
 const mapStateToProps = (state) => {
   return {
+    isAuthenticated: state.auth.isAuthenticated,
     isFetching: state.books.isFetching,
     profiles: state.books.books,
     error: state.books.error,

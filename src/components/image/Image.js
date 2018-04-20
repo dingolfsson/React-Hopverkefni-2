@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { updatePhoto } from '../../actions/auth';
 import Button from '../button';
+import { Redirect } from 'react-router';
 
 import './Image.css';
 
@@ -28,7 +29,12 @@ class Image extends Component {
   }
 
   render() {
-    const { isFetching } = this.props;
+    const { isFetching, isAuthenticated } = this.props;
+
+    if (!isAuthenticated) {
+      return <Redirect to='/' />;
+    }
+
     if (isFetching) {
       return (
         <p>Sæki minnisatriði..</p>
@@ -50,6 +56,7 @@ class Image extends Component {
 
 const mapStateToProps = (state) => {
   return {
+    isAuthenticated: state.auth.isAuthenticated,
     isFetching: state.books.isFetching,
     profiles: state.books.books,
     error: state.books.error,
