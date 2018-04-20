@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import querystring from 'query-string';
 import { fetchBooks } from '../../actions/books';
-import { NavLink, Route } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import List from '../list';
 
 class Books extends Component {
@@ -13,7 +13,7 @@ class Books extends Component {
   }
 
   async componentDidMount() {       
-    const { dispatch, search, slug } = this.props;
+    const { dispatch, search } = this.props;
     const query = querystring.parse(search);
     
     dispatch(fetchBooks(search));

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Route, Redirect } from 'react-router';
+import { Redirect } from 'react-router';
 import { connect } from 'react-redux';
 import { loginUser, logoutUser } from '../../actions/auth';
 import { Link } from 'react-router-dom';

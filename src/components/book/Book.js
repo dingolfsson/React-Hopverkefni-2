@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
-import { NavLink, Route } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { fetchBook } from '../../actions/books';
 
 class Book extends Component {

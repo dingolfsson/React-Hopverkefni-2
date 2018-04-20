@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 import Image from '../../components/image';
 
 class Images extends Component {
@@ -13,5 +12,5 @@ class Images extends Component {
   }
 }
 
-export default Image;
+export default Images;
 
