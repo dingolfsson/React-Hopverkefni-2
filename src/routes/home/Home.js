@@ -13,7 +13,7 @@ class Home extends Component {
     if (isAuthenticated) {
       return (
         <div>
-          <h1>Velkomin á bókasafnið</h1>
+          <h2 className="page__title">Velkomin á bókasafnið</h2>
           <p>Þú ert skráður notandi og getur því <Link to="/books/new">skráð bækur</Link> og breytt <Link to="/books">þeim sem til eru</Link>.</p>
           <p>Einnig getur þú skoðað <Link to="/users">aðra notendur</Link>.</p>
         </div>
@@ -21,7 +21,8 @@ class Home extends Component {
     }
     return (
       <div>
-        <p>Til að njóta bókasafnsins til fullsnustu mælum við með að <Link to="/login">skrá sig inn</Link>. Þangað til getur þú skoðað allar bækurnar</p>
+        <h2 className="page__title">Velkomin á bókasafnið</h2>
+        <p>Til að njóta bókasafnsins til fullsnustu mælum við með að <Link to="/login">skrá sig inn</Link>. Þangað til getur þú skoðað <Link to="/books">allar bækurnar</Link></p>
       </div>
     );
   }

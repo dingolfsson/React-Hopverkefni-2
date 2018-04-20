@@ -1,4 +1,8 @@
 .paging {
     display: flex;
+    align-items: center;
+}
 
+.paging:not(:first-child) {
+    margin: 0 1rem;
 }

@@ -25,7 +25,7 @@ class Book extends Component {
 
     return (
       <div>
-        <h3>{book.title}</h3>
+        <h2 className="page__title">{book.title}</h2>
         <p>Eftir {book.author}</p>
         
         {book.isbn10 && (

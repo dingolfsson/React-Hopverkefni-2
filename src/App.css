@@ -1,3 +1,11 @@
 main {
     height: 100%;
 }
+
+.main__content { 
+    padding: 2rem 10rem;
+}
+
+.page__title {
+    padding: 1rem 0;
+}

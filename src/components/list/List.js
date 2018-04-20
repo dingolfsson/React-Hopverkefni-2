@@ -37,13 +37,13 @@ class List extends Component {
     
     return(
       <section className="list">
-        <h2>{title}</h2>
+        <h2 className="page__title">{title}</h2>
         {data}
         <div className="paging">
-          <p>Síða {page}</p>
-            {page > 1 && (
+          {page > 1 && (
             <Button onClick={this.handlePrevious}> &lt; Fyrri síða </Button>
           )}
+          <p>Síða {page}</p>
           {(data && data.length === 10 ) && (
             <Button onClick={this.handleNext}> Næsta síða > </Button>
           )}

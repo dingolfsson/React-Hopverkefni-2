@@ -56,7 +56,11 @@ class Books extends Component {
                   className="navigation__link"
                 ><h4>{i.title}</h4>
                 </NavLink>
-                <p>Eftir {i.author}, gefin út {i.published}</p>
+                <p>Eftir {i.author}
+                {i.published && (`, gefin út ${i.published}`)
+                  }
+                </p>
+
               </div>
               )
             ))
