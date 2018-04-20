@@ -1,13 +1,13 @@
-.pachSection{
+/* .section__patch{
     display: flex;
     flex-flow: wrap;
     flex-direction: row;
     padding: 10px;
 }
-.pachH{
+.patchH{
     width: 100%;
 }
-.pachForm{
+.patchForm{
     height: 200px;
     display: flex;
     flex-direction: row;
@@ -19,4 +19,4 @@ input{
 .pachdiv{
     width: 100%;
     display: flex;
-}
+} */

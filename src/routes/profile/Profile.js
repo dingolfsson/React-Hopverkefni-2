@@ -2,18 +2,17 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import Profile from '../../components/profile';
-import PachUser from '../../components/pachUser';
+import PatchUser from '../../components/patchUser';
 import Image from '../../components/image';
-
-import './Profile.css';
 
 class Profiles extends Component {
 
   render() {
     return (
-      <div class='profile'>
+      <div className='profile'>
+        <h2 className="page__title">Upplýsingar</h2>
         <Image />
-        <PachUser />
+        <PatchUser />
         <Profile />
       </div>
     );

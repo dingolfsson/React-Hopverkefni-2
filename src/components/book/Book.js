@@ -1,14 +1,19 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
-import { NavLink, Route } from 'react-router-dom';
+import { NavLink, Redirect } from 'react-router-dom';
 import { fetchBook } from '../../actions/books';
+import Button from '../button';
 
 class Book extends Component {
+
 
   async componentDidMount() {
     const { dispatch, slug } = this.props;
     dispatch(fetchBook(slug.pathname));
+  }
+
+  review() {
+    
   }
 
   render() {
@@ -26,7 +31,7 @@ class Book extends Component {
 
     return (
       <div>
-        <h3>{book.title}</h3>
+        <h2 className="page__title">{book.title}</h2>
         <p>Eftir {book.author}</p>
         
         {book.isbn10 && (
@@ -55,7 +60,8 @@ class Book extends Component {
         <NavLink to={newPath} className="navigation__link"
         ><p>Breyta bók</p>  </NavLink>
 
-        {/* button here ... */}
+        <Button onClick={this.review} className='readbook' children='Lesin Bók' />
+        <Button className='back' children='Til Baka' />
         
       </div>
     )

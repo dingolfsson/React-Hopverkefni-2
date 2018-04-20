@@ -30,7 +30,7 @@ class Form extends Component {
   handleSubmit = async (e) => {
     e.preventDefault();
 
-    const { dispatch, slug, success } = this.props;
+    const { dispatch, slug } = this.props;
     const data = { ...this.state };
     const path = slug.pathname;
     const newPath = path.replace('edit', '');
@@ -44,6 +44,7 @@ class Form extends Component {
 
   async componentDidMount() {
     const { dispatch, books, slug } = this.props;
+    console.log(this.props)
     dispatch(fetchCategories());
     const path = slug.pathname;
     if (path !== '/books/new') {
@@ -58,7 +59,11 @@ class Form extends Component {
 
 
   render() {
-    const { isAdding, errors, isFetching, categories, success, slug, books } = this.props;
+    const { isAdding, isAuthenticated, errors, isFetching, categories, success, slug, books } = this.props;
+    
+    if(!isAuthenticated) {
+      return <Redirect to='/'/>;
+    }
 
     if(isAdding) {
       return (
@@ -93,7 +98,7 @@ class Form extends Component {
 
     return (
       <div className='form-container'>              
-        <h1>{title}</h1>
+        <h2 className="page__title">{title}</h2>
         {errors.errors && (
           <ul>{errors.errors.map((error, i) => (
             <li key={i}>
@@ -105,7 +110,7 @@ class Form extends Component {
         <form onSubmit={this.handleSubmit}>
 
           <div>
-            <label htmlFor="title">Tittle:</label>
+            <label htmlFor="title">Title:</label>
             <input id="title" type="text" name="title" value={this.state.title} onChange={this.handleInputChange} />
           </div>
 
@@ -142,7 +147,7 @@ class Form extends Component {
 
           <div>
             <label htmlFor="pagecount ">Page:</label>
-            <input id="pagecount" type="text" name="pageCount" value={this.state.pagecount} onChange={this.handleInputChange} />
+            <input id="pagecount" type="text" name="pageCount" value={this.state.pageCount} onChange={this.handleInputChange} />
           </div>
 
           <div>
@@ -165,6 +170,7 @@ class Form extends Component {
 
 const mapStateToProps = (state) => {
   return {
+    isAuthenticated: state.auth.isAuthenticated,
     isAdding: state.books.isAdding,
     isUpdating: state.books.isUpdating,
     errors: state.books.errors,
