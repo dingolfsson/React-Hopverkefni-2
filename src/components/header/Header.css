@@ -7,29 +7,30 @@
   margin-top: auto;
 }
 
-.header > * {
-  margin: .5rem;
-}
-
 .header__heading {
   text-decoration: none;
 }
 
 .user-wrapper {
   display: flex;
+  justify-content: flex-end;
+  max-width: 300px;
 }
 
-.user-wrapper > * {
-  margin: 0 .5rem;
-}
 
-.right-wrapper > * {
+
+.right-wrapper {
   display: flex;
+  align-content: flex-end;
+  justify-content: flex-end;
+  align-items: flex-end; 
   flex-direction: column;
+  margin-right: 3%;
 }
 
 img {
-  width: 10%;
-  height: 10%;
+  width: 5em;
+  height: 5em;
+  margin-right: 10%;
   border-radius: 50%;
 }

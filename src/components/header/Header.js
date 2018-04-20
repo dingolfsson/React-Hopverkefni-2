@@ -20,12 +20,15 @@ class Header extends Component {
     const { name, image } = this.props;
       return (
         <header className="header">
-          <Link to="/" className="header__heading"><h1>Bókasafnið</h1></Link>
-          <Search />
+          <div>
+            <Link to="/" className="header__heading"><h1>Bókasafnið</h1></Link>
+          </div>
+          <div>
+            <Search />
+          </div>
           {this.props.auth.isAuthenticated ? (
-            <div className="user-wrapper">
-                <img src={image} alt="user pic" />
-        
+            <div className="user-wrapper">   
+              <img src={image} alt="user pic" />           
               <div className="right-wrapper">
                 <Link to="/profile">{name}</Link>
                 <Button onClick={this.handleLogout}>Logout</Button>

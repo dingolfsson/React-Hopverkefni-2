@@ -2,12 +2,18 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { fetchBook } from '../../actions/books';
+import Button from '../button';
 
 class Book extends Component {
+
 
   async componentDidMount() {
     const { dispatch, slug } = this.props;
     dispatch(fetchBook(slug.pathname));
+  }
+
+  review() {
+    
   }
 
   render() {
@@ -54,7 +60,7 @@ class Book extends Component {
         <NavLink to={newPath} className="navigation__link"
         ><p>Breyta bók</p>  </NavLink>
 
-        {/* button here ... */}
+        <Button onClick={this.review} className='readbook' children='Lesin Bók' />
         
       </div>
     )
