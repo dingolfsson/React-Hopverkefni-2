@@ -92,9 +92,7 @@ function receiveUpdateBook(book) {
   }
 }
 
-export const fetchBooks = (query) => {
-  console.log(query);
-  
+export const fetchBooks = (query) => {  
   return async (dispatch) => {
     dispatch(requestBooks());
     let books;

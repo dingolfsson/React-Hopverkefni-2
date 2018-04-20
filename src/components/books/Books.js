@@ -17,7 +17,7 @@ class Books extends Component {
     const query = querystring.parse(search);
     
     dispatch(fetchBooks(search));
-    if (query.search.length !== 0) {
+    if (search.length !== 0) {
       this.setState({ search: query.search, isQuery: true })
     }
   }

@@ -1,20 +1,25 @@
 .header {
   background-color: #dcbe87;
   display: flex;
-  flex-direction: row;
+  justify-content: space-between;
   margin-bottom: auto;
   margin-top: auto;
 }
+
+.header > * {
+  padding: 1rem;
+}
+
+.header__heading {
+  text-decoration: none;
+}
+
 img{
   width: 10%;
   height: 10%;
   margin-left: auto;
   margin-right: 10%;
   border-radius: 50%;
-}
-h1{
-  margin-bottom: auto;
-  margin-top: auto;
 }
 
 button{

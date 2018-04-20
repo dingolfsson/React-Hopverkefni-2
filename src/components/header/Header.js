@@ -15,19 +15,13 @@ class Header extends Component {
     const { dispatch } = this.props;
     dispatch(logoutUser());
   }
-  componentDidMount(){
-    
-  }
-
 
   render() {
     const { name, image } = this.props;
     if (this.props.auth.isAuthenticated) {
       return (
         <header className="header">
-          <h1 className="header__heading"><Link to="/">Bókasafnið</Link></h1>
-  
-          {/* ætti samt frekar heima í sér component */}
+          <Link to="/" className="header__heading"><h1>Bókasafnið</h1></Link>
           <Search />
           <Link to="/profile">{ name }</Link>
           <Button onClick={this.handleLogout}>Logout</Button>
@@ -37,7 +31,7 @@ class Header extends Component {
     }
     return (
       <header className="header">
-        <h1 className="header__heading"><Link to="/">Bókasafnið</Link></h1>
+        <Link to="/" className="header__heading"><h1>Bókasafnið</h1></Link>
 
         <Search />
         
@@ -48,7 +42,6 @@ class Header extends Component {
 }
 
 const mapStateToProps = (state) => {
-  console.info(state);
   return {
     auth: state.auth,
     name: state.auth.user ? state.auth.user.name : '',
