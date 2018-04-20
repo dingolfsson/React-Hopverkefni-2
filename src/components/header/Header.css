@@ -1,0 +1,38 @@
+.header {
+  background-color: #dcbe87;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: auto;
+  margin-top: auto;
+  width: 100%;
+}
+
+.header__heading {
+  text-decoration: none;
+}
+
+.header > * {
+  margin: .5rem;
+}
+
+.user-wrapper {
+  display: flex;
+  justify-content: flex-end;
+  max-width: 40rem;
+  padding: 0 2rem;
+}
+
+.right-wrapper {
+  display: flex;
+  justify-content: center; 
+  flex-direction: column;
+  margin-right: 3%;
+}
+
+img {
+  width: 5em;
+  height: 5em;
+  margin-right: 10%;
+  border-radius: 50%;
+}

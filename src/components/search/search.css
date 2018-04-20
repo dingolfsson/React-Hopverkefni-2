@@ -1,0 +1,12 @@
+.search-form {
+    display: flex;
+}
+
+.search-form > * {
+    margin: 0 .5rem;
+}
+
+.search-field {
+    padding: 1rem .5rem;
+    width: 10rem;
+}

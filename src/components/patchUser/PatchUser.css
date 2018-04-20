@@ -1,0 +1,22 @@
+/* .section__patch{
+    display: flex;
+    flex-flow: wrap;
+    flex-direction: row;
+    padding: 10px;
+}
+.patchH{
+    width: 100%;
+}
+.patchForm{
+    height: 200px;
+    display: flex;
+    flex-direction: row;
+    flex-flow: wrap;
+}
+input{
+    margin: auto;
+}
+.pachdiv{
+    width: 100%;
+    display: flex;
+} */
