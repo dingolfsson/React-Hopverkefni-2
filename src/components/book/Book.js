@@ -4,12 +4,14 @@ import { NavLink, Redirect } from 'react-router-dom';
 import { fetchBook } from '../../actions/books';
 import { browserHistory } from 'react-router'
 import Button from '../button';
+import { addReadBook } from '../../actions/profiles'
 
 class Book extends Component {
 
   state = {
+    bookId: 0,
     review: '',
-    grade: 0,
+    rating: 0,
     visible: false,
   }
 
@@ -36,9 +38,11 @@ class Book extends Component {
     e.preventDefault();
 
     const { dispatch } = this.props;
-    const data = { ...this.state };
-    
-    // dispatch(addReview(data));
+    const data = { 
+      bookId: this.props.books.books.id,
+      rating: this.props.rating,
+     };
+    dispatch(addReadBook(data));
     
   }
 
@@ -91,7 +95,7 @@ class Book extends Component {
         )}
 
         {visible && (
-          <div>
+        <form onSubmit={this.handleSubmit}>
             <label htmlFor="review">Um bók:</label>
             <textarea id="review" type="text" name="review" value={this.state.review} onChange={this.handleInputChange} />
             <label htmlFor="grade">Einkunn:</label>
@@ -103,7 +107,7 @@ class Book extends Component {
               <option key='5' value='5'>5</option>
             </select>
             <Button className='vista' children='Vista' />
-          </div>
+          </form>
         )}
 
       </div>
