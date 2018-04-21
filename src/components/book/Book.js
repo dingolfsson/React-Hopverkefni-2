@@ -4,14 +4,14 @@ import { NavLink, Redirect } from 'react-router-dom';
 import { fetchBook } from '../../actions/books';
 import { browserHistory } from 'react-router'
 import Button from '../button';
-import { addReadBook } from '../../actions/profiles';
+import { addReadBook } from '../../actions/profiles'
 
 class Book extends Component {
 
   state = {
-    review: '',
     bookId: 0,
-    rating: 1,
+    review: '',
+    rating: 0,
     visible: false,
   }
 
@@ -37,12 +37,11 @@ class Book extends Component {
   handleSubmit = async (e) => {
     e.preventDefault();
 
-    const { dispatch, books } = this.props;
-    const bookId = books.books.id;
-
-    this.setState({bookId: bookId});
-
-    const data = { ...this.state };
+    const { dispatch } = this.props;
+    const data = { 
+      bookId: this.props.books.books.id,
+      rating: this.props.rating,
+     };
     dispatch(addReadBook(data));
     
   }
