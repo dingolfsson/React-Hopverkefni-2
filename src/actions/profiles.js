@@ -163,6 +163,8 @@ export const deleteReadBook = (id) => {
   }
 }
 export const addReadBook = (data) => {
+  data.rating = Number(data.rating);
+  console.log(data)
   return async (dispatch) => {
     dispatch(addingProfile());
     let book;
