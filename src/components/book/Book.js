@@ -48,7 +48,7 @@ class Book extends Component {
 
 
   render() {
-    const { isFetching, books, slug } = this.props;
+    const { isFetching, books, slug, isAdding } = this.props;
     const {visible} = this.state;
     if (isFetching) {
       return (
@@ -95,18 +95,18 @@ class Book extends Component {
         )}
 
         {visible && (
-        <form onSubmit={this.handleSubmit}>
+          <form onSubmit={this.handleSubmit}>
             <label htmlFor="review">Um bók:</label>
             <textarea id="review" type="text" name="review" value={this.state.review} onChange={this.handleInputChange} />
             <label htmlFor="grade">Einkunn:</label>
-            <select onChange={this.handleInputChange} name='grade'>
+            <select onChange={this.handleInputChange} name='rating'>
               <option key='1' value='1'>1</option>
               <option key='2' value='2'>2</option>
               <option key='3' value='3'>3</option>
               <option key='4' value='4'>4</option>
               <option key='5' value='5'>5</option>
             </select>
-            <Button className='vista' children='Vista' />
+            <Button disabled={isAdding} className='vista' children='Vista' />
           </form>
         )}
 
@@ -118,6 +118,7 @@ class Book extends Component {
 const mapStateToProps = (state) => {
   return {
     ...state,
+    isAdding: state.profiles.isAdding,
   }
 }
 
