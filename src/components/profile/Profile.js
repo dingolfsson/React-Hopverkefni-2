@@ -65,8 +65,8 @@ class Profile extends Component {
 }
 
 const mapStateToProps = (state) => {
-  console.info(state);
   return {
+    isAuthenticated: state.auth.isAuthenticated,
     isFetching: state.profiles.isFetching,
     profiles: state.books.books,
     error: state.profiles.error,

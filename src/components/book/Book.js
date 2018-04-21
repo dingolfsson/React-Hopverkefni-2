@@ -49,7 +49,7 @@ class Book extends Component {
 
 
   render() {
-    const { isFetching, books, slug, isAdding } = this.props;
+    const { isFetching, books, slug, isAdding, isAuthenticated } = this.props;
     const {visible} = this.state;
     if (isFetching) {
       return (
@@ -91,11 +91,11 @@ class Book extends Component {
 
         <NavLink to={newPath} className="navigation__link"><p>Breyta bók</p>  </NavLink>
 
-        {!visible && (
+        {!visible && isAuthenticated && (
           <Button onClick={this.review()} className='readbook' children='Lesin Bók' />
         )}
 
-        {visible && (
+        {visible && isAuthenticated && (
           <form onSubmit={this.handleSubmit}>
             <label htmlFor="review">Um bók:</label>
             <textarea id="review" type="text" name="review" value={this.state.review} onChange={this.handleInputChange} />
@@ -120,6 +120,7 @@ const mapStateToProps = (state) => {
   return {
     ...state,
     isAdding: state.profiles.isAdding,
+    isAuthenticated: state.auth.isAuthenticated,
   }
 }
 
